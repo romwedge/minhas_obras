@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acervo Literário | Autor, Filólogo e Tradutor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #0c0d10;
+            --card-bg: #14161d;
+            --gold: #d4af37;
+            --gold-hover: #b5932a;
+            --text-title: #f5f6fa;
+            --text-body: #a0a5b5;
+            --text-muted: #62687a;
+            --border: rgba(255, 255, 255, 0.08);
+            --font-h: 'Cinzel', serif;
+            --font-b: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text-body); font-family: var(--font-b); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        a { text-decoration: none; transition: 0.3s; }
+
+        /* HEADER */
+        header { 
+            padding: 20px 0; 
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: rgba(12, 13, 16, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        .header-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-h); font-size: 1.3rem; letter-spacing: 2px; color: #fff; font-weight: 700; text-transform: uppercase; }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { color: var(--text-body); font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--gold); }
+        .btn-contact { background: var(--gold); color: #000; padding: 10px 24px; border-radius: 6px; font-weight: 700; }
+
+        /* HERO SECTION */
+        .hero { padding: 100px 0 60px; text-align: center; }
+        .badge { 
+            display: inline-block; 
+            padding: 6px 18px; 
+            border: 1px solid var(--gold); 
+            color: var(--gold); 
+            font-size: 0.7rem; 
+            border-radius: 50px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .hero h1 { 
+            font-family: var(--font-h); 
+            font-size: clamp(2rem, 6vw, 3.8rem); 
+            color: #fff; 
+            line-height: 1.2; 
+            margin-bottom: 30px; 
+            text-transform: uppercase;
+        }
+        .hero p { max-width: 700px; margin: 0 auto 40px; color: var(--text-body); font-size: 1.1rem; }
+        
+        .hero-btns { display: flex; justify-content: center; align-items: center; gap: 25px; margin-bottom: 60px; }
+        .btn-primary { background: var(--gold); color: #000; padding: 16px 35px; border-radius: 6px; font-weight: 700; box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); }
+        .btn-primary:hover { transform: translateY(-3px); background: var(--gold-hover); }
+        .btn-link { color: #fff; font-weight: 400; }
+
+        /* STATS */
+        .stats { 
+            display: flex; 
+            justify-content: center; 
+            gap: 80px; 
+            padding: 60px 0; 
+            border-top: 1px solid var(--border);
+        }
+        .stat-item { text-align: center; }
+        .stat-num { font-family: var(--font-h); font-size: 2.2rem; color: var(--gold); display: block; margin-bottom: 5px; }
+        .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* CATALOG GRID */
+        .books-section { padding: 80px 0; }
+        .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 40px; }
+        
+        .book-card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border); 
+            padding: 30px; 
+            border-radius: 12px; 
+            transition: 0.3s ease; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .book-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
+
+        /* CAPAS COM IMAGENS REAIS */
+        .cover-container { 
+            width: 180px; 
+            height: 260px; 
+            margin: 0 auto 25px; 
+            position: relative;
+            perspective: 1000px;
+        }
+        .book-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            border-radius: 2px 5px 5px 2px;
+            box-shadow: 8px 10px 25px rgba(0,0,0,0.6);
+            border-left: 2px solid rgba(255,255,255,0.1);
+            transition: 0.5s ease;
+        }
+        .book-card:hover .book-img {
+            transform: rotateY(-10deg) translateX(5px);
+        }
+
+        .book-title { font-family: var(--font-h); color: #fff; font-size: 1.1rem; margin-bottom: 15px; text-align: center; min-height: 3.2rem; display: flex; align-items: center; justify-content: center; }
+        .book-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; text-align: center; flex-grow: 1; line-height: 1.5; }
+
+        .btn-buy { border: 1px solid var(--gold); color: var(--gold); padding: 12px; text-align: center; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; border-radius: 4px; margin-bottom: 8px; transition: 0.3s; cursor: pointer; }
+        .btn-buy:hover:not(.disabled) { background: var(--gold); color: #000; }
+        .btn-buy.disabled { opacity: 0.3; cursor: not-allowed; border-color: var(--text-muted); color: var(--text-muted); }
+
+        /* SEÇÃO SOBRE O AUTOR */
+        .about { padding: 100px 0; background: #08090b; border-top: 1px solid var(--border); }
+        .about-flex { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
+        .about-img { flex: 1; min-width: 300px; text-align: center; }
+        .about-img img { width: 280px; height: 280px; border-radius: 50%; border: 3px solid var(--gold); object-fit: cover; padding: 10px; filter: grayscale(10%); }
+        .about-text { flex: 2; min-width: 300px; }
+        .about-text h2 { font-family: var(--font-h); color: var(--gold); font-size: 2.2rem; margin-bottom: 25px; }
+        .about-text p { margin-bottom: 20px; font-size: 1.1rem; line-height: 1.8; text-align: justify; color: var(--text-body); }
+        .about-text strong { color: var(--gold); font-weight: 700; }
+
+        /* FOOTER */
+        footer { padding: 60px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.8rem; letter-spacing: 2px; }
+
+        /* MODAL */
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(8px); }
+        .modal.active { display: flex; }
+        .modal-content { background: var(--card-bg); padding: 40px; border: 1px solid var(--gold); text-align: center; max-width: 420px; border-radius: 12px; }
+        .btn-modal-close { background: none; border: 1px solid var(--text-muted); color: var(--text-muted); padding: 10px 25px; cursor: pointer; border-radius: 4px; text-transform: uppercase; font-size: 0.7rem; margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .stats { flex-direction: column; gap: 40px; }
+            .about-flex { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <div class="logo">Acervo Literário</div>
+            <nav class="nav-links">
+                <a href="#obras">Livros</a>
+                <a href="#sobre">O Autor</a>
+                <a href="#" class="btn-contact">Fale Conosco</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <span class="badge">Estudos Teológicos & Proféticos</span>
+            <h1>Verdades Reveladas Para<br>Tempos Decisivos</h1>
+            <p>Uma imersão literária nas profundezas das Escrituras, explorando os mistérios da alma, a precisão das profecias e a esperança do Evangelho.</p>
+            
+            <div class="hero-btns">
+                <a href="#obras" class="btn-primary">Ver Catálogo</a>
+                <a href="#sobre" class="btn-link">Conheça a Jornada →</a>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-num">7</span>
+                    <span class="stat-label">Obras Publicadas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Rigor Bíblico</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">2</span>
+                    <span class="stat-label">Formatos Disponíveis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="obras" class="container books-section">
+        <div class="books-grid" id="grid">
+            <!-- Livros renderizados via JavaScript -->
+        </div>
+    </section>
+
+    <section id="sobre" class="about">
+        <div class="container about-flex">
+            <div class="about-img">
+                <img src="author-Rom_Wedge_2.jpeg" alt="Autor">
+            </div>
+            <div class="about-text">
+                <h2>Sobre o Autor</h2>
+                <p><strong>Autor, Filólogo, Tradutor,</strong> o autor dedica sua trajetória ao mergulho profundo nas intersecções entre a teologia bíblica e os dilemas da condição humana. Suas obras não são meros manuais dogmáticos, mas sim investigações literárias que buscam decifrar os símbolos das profecias e as nuances da alma sob a luz das Escrituras.</p>
+                <p>Com um domínio técnico das linguagens bíblicas e um olhar atento à exegese, ele une o rigor acadêmico à sensibilidade narrativa, convidando o leitor a uma jornada de expansão intelectual e despertamento espiritual através da palavra escrita.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 TODOS OS DIREITOS RESERVADOS. PROPRIEDADE INTELECTUAL E LITERÁRIA.
+        </div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3 style="font-family: var(--font-h); color: var(--gold); margin-bottom: 15px;">Obra em Lançamento</h3>
+            <p id="modal-msg"></p>
+            <button class="btn-modal-close" onclick="closeModal()">Entendido</button>
+        </div>
+    </div>
+
+    <script>
+        const books = [
+            { 
+                title: "A Marca da Besta", 
+                image: "amarca.png", 
+                desc: "Uma investigação profunda sobre as profecias do Apocalipse e o cenário global contemporâneo." 
+            },
+            { 
+                title: "Profecias Messiânicas e as Últimas 24hs de Jesus", 
+                image: "capa2.jpg", 
+                desc: "A exatidão das promessas bíblicas cumpridas integralmente nas horas finais de Cristo." 
+            },
+            { 
+                title: "Ao Pó Tornarás", 
+                image: "Ao_Po_Tornaras.jpeg", 
+                desc: "Reflexões sobre a finitude humana e a esperança que triunfa sobre a transitoriedade." 
+            },
+            { 
+                title: "Alma é para o corpo - Espírito é para Deus, Vol I", 
+                image: "alma_I.png", 
+                desc: "Estudo sobre a natureza tripartida do homem: a distinção entre alma e espírito." 
+            },
+            { 
+                title: "Alma é para o corpo - Espírito é para Deus, Vol II", 
+                image: "capa5.jpg", 
+                desc: "O aprofundamento da conexão espiritual e a caminhada prática com o Criador." 
+            },
+            { 
+                title: "O Livro das Perguntas Difíceis da Fé", 
+                image: "capa6.jpg", 
+                desc: "Respostas fundamentadas para os dilemas mais complexos da caminhada cristã." 
+            },
+            { 
+                title: "As duas Testemunhas do Apocalipse", 
+                image: "capa7.jpg", 
+                desc: "Exegese detalhada sobre o papel e o impacto profético das testemunhas finais." 
+            }
+        ];
+
+        const grid = document.getElementById('grid');
+        books.forEach(b => {
+            grid.innerHTML += `
+                <div class="book-card">
+                    <div class="cover-container">
+                        <img src="${b.image}" alt="${b.title}" class="book-img" onerror="this.src='https://via.placeholder.com/180x260?text=Capa+Indisponivel'">
+                    </div>
+                    <h3 class="book-title">${b.title}</h3>
+                    <p class="book-desc">${b.desc}</p>
+                    <a class="btn-buy disabled" onclick="openModal('${b.title}', 'Impresso')">Livro Impresso</a>
+                    <a class="btn-buy disabled" onclick="openModal('${b.title}', 'Digital')">Versão Digital (Kindle)</a>
+                </div>
+            `;
+        });
+
+        function openModal(t, type) {
+            document.getElementById('modal-msg').innerHTML = `A versão <strong>${type}</strong> da obra <em>"${t}"</em> está sendo processada e estará disponível em breve.`;
+            document.getElementById('modal').classList.add('active');
+        }
+        function closeModal() { document.getElementById('modal').classList.remove('active'); }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) closeModal();
+        }
+    </script>
+</body>
+</html>
