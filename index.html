@@ -6,317 +6,256 @@
     <title>Acervo Literário | Autor, Filólogo e Tradutor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg: #0c0d10;
-            --card-bg: #14161d;
+            --sidebar-bg: #111216;
+            --card-bg: #16171d;
             --gold: #d4af37;
             --gold-hover: #b5932a;
             --text-title: #f5f6fa;
             --text-body: #a0a5b5;
-            --text-muted: #62687a;
-            --border: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.05);
             --font-h: 'Cinzel', serif;
             --font-b: 'Plus Jakarta Sans', sans-serif;
         }
 
+        /* LAYOUT ESTRUTURAL */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { background: var(--bg); color: var(--text-body); font-family: var(--font-b); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        a { text-decoration: none; transition: 0.3s; }
+        body { background-color: var(--bg); color: var(--text-body); font-family: var(--font-b); display: flex; min-height: 100vh; }
 
-        /* HEADER */
-        header { 
-            padding: 20px 0; 
-            border-bottom: 1px solid var(--border);
-            position: sticky;
+        /* SIDEBAR FIXA (ESQUERDA) */
+        aside.sidebar {
+            width: 350px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            height: 100vh;
+            position: fixed;
+            left: 0;
             top: 0;
-            background: rgba(12, 13, 16, 0.9);
-            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            padding: 50px 40px;
             z-index: 1000;
         }
-        .header-flex { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: var(--font-h); font-size: 1.3rem; letter-spacing: 2px; color: #fff; font-weight: 700; text-transform: uppercase; }
-        .nav-links { display: flex; align-items: center; gap: 30px; }
-        .nav-links a { color: var(--text-body); font-size: 0.9rem; }
-        .nav-links a:hover { color: var(--gold); }
-        .btn-contact { background: var(--gold); color: #000; padding: 10px 24px; border-radius: 6px; font-weight: 700; }
 
-        /* HERO SECTION */
-        .hero { padding: 100px 0 60px; text-align: center; }
-        .badge { 
-            display: inline-block; 
-            padding: 6px 18px; 
-            border: 1px solid var(--gold); 
-            color: var(--gold); 
-            font-size: 0.7rem; 
-            border-radius: 50px; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            margin-bottom: 40px;
-            background: rgba(212, 175, 55, 0.05);
+        .author-info { text-align: center; margin-bottom: 40px; }
+        .author-img { 
+            width: 150px; height: 150px; border-radius: 50%; 
+            border: 2px solid var(--gold); object-fit: cover; 
+            margin-bottom: 20px; padding: 5px;
         }
-        .hero h1 { 
-            font-family: var(--font-h); 
-            font-size: clamp(2rem, 6vw, 3.8rem); 
-            color: #fff; 
-            line-height: 1.2; 
-            margin-bottom: 30px; 
-            text-transform: uppercase;
-        }
-        .hero p { max-width: 700px; margin: 0 auto 40px; color: var(--text-body); font-size: 1.1rem; }
+        .author-name { font-family: var(--font-h); color: #fff; font-size: 1.4rem; margin-bottom: 5px; }
+        .author-title { color: var(--gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; display: block; }
         
-        .hero-btns { display: flex; justify-content: center; align-items: center; gap: 25px; margin-bottom: 60px; }
-        .btn-primary { background: var(--gold); color: #000; padding: 16px 35px; border-radius: 6px; font-weight: 700; box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); }
-        .btn-primary:hover { transform: translateY(-3px); background: var(--gold-hover); }
-        .btn-link { color: #fff; font-weight: 400; }
+        .author-bio { font-size: 0.85rem; line-height: 1.6; text-align: justify; margin-bottom: 40px; color: var(--text-body); opacity: 0.8; }
 
-        .stats { 
-            display: flex; 
-            justify-content: center; 
-            gap: 80px; 
-            padding: 60px 0; 
-            border-top: 1px solid var(--border);
+        .nav-menu { list-style: none; margin-top: auto; }
+        .nav-menu li { margin-bottom: 15px; }
+        .nav-menu a { 
+            color: #fff; text-decoration: none; font-family: var(--font-h); 
+            font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s;
+            display: block; opacity: 0.6;
         }
-        .stat-item { text-align: center; }
-        .stat-num { font-family: var(--font-h); font-size: 2.2rem; color: var(--gold); display: block; margin-bottom: 5px; }
-        .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .nav-menu a:hover { opacity: 1; color: var(--gold); padding-left: 5px; }
 
-        /* CATALOG GRID */
-        .books-section { padding: 80px 0; }
-        .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 40px; }
+        /* CONTEÚDO PRINCIPAL */
+        main.content {
+            margin-left: 350px;
+            flex: 1;
+            padding: 80px;
+            max-width: 1200px;
+        }
+
+        .hero-title { font-family: var(--font-h); font-size: 3.5rem; color: #fff; line-height: 1.1; margin-bottom: 30px; }
+        .section-label { font-size: 0.75rem; color: var(--gold); font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        
+        /* GRID DE LIVROS */
+        .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; margin-bottom: 120px; }
         
         .book-card { 
-            background: var(--card-bg); 
-            border: 1px solid var(--border); 
-            padding: 30px; 
-            border-radius: 12px; 
-            transition: 0.3s ease; 
-            display: flex; 
-            flex-direction: column; 
+            background: var(--card-bg); border: 1px solid var(--border); 
+            padding: 30px; border-radius: 4px; display: grid; 
+            grid-template-columns: 160px 1fr; gap: 30px; transition: 0.3s;
         }
-        .book-card:hover { border-color: var(--gold); transform: translateY(-5px); }
 
-        .cover-container { 
-            width: 180px; 
-            height: 260px; 
-            margin: 0 auto 25px; 
-            perspective: 1000px;
+        /* EFEITO AMAZON ZOOM */
+        .book-cover-container {
+            width: 160px;
+            height: 240px;
+            overflow: hidden; /* Corta a imagem quando ela amplia */
+            border-radius: 4px;
+            box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+            cursor: zoom-in;
+            background: #000;
         }
-        .book-img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            border-radius: 2px 5px 5px 2px;
-            box-shadow: 8px 10px 25px rgba(0,0,0,0.6);
-            transition: 0.5s ease;
+
+        .book-img-zoom {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.1s ease-out; /* Suavidade no movimento */
+            transform-origin: center center;
         }
-        .book-card:hover .book-img { transform: rotateY(-10deg) translateX(5px); }
 
-        .book-title { font-family: var(--font-h); color: #fff; font-size: 1.1rem; margin-bottom: 15px; text-align: center; min-height: 3.2rem; display: flex; align-items: center; justify-content: center; }
-        .book-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; text-align: center; flex-grow: 1; line-height: 1.5; }
+        .book-cover-container:hover .book-img-zoom {
+            transform: scale(2.5); /* Nível do Zoom */
+        }
 
-        .btn-buy { border: 1px solid var(--gold); color: var(--gold); padding: 12px; text-align: center; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; border-radius: 4px; margin-bottom: 8px; transition: 0.3s; cursor: pointer; }
-        .btn-buy:hover:not(.disabled) { background: var(--gold); color: #000; }
-        .btn-buy.disabled { opacity: 0.3; cursor: not-allowed; border-color: var(--text-muted); color: var(--text-muted); }
-
-        /* SEÇÃO SOBRE O AUTOR */
-        .about { padding: 100px 0; background: #08090b; border-top: 1px solid var(--border); }
-        .about-flex { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
-        .about-img { flex: 1; min-width: 300px; text-align: center; }
-        .about-img img { width: 280px; height: 280px; border-radius: 50%; border: 3px solid var(--gold); object-fit: cover; padding: 10px; }
-        .about-text { flex: 2; min-width: 300px; }
-        .about-text h2 { font-family: var(--font-h); color: var(--gold); font-size: 2.2rem; margin-bottom: 25px; }
-        .about-text p { margin-bottom: 20px; font-size: 1.1rem; line-height: 1.8; text-align: justify; }
-
-        /* FALE CONOSCO SECTION */
-        .contact-section { padding: 100px 0; background: var(--bg); border-top: 1px solid var(--border); }
-        .contact-header { text-align: center; margin-bottom: 50px; }
-        .contact-form { max-width: 600px; margin: 0 auto; background: var(--card-bg); padding: 40px; border-radius: 12px; border: 1px solid var(--border); }
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 600; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px 16px; background: #1a1b20; border: 1px solid var(--border); border-radius: 6px; color: #fff; font-family: var(--font-b); font-size: 1rem; transition: 0.3s; }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); background: #22242b; }
-        .btn-submit { width: 100%; padding: 16px; background: var(--gold); color: #000; border: none; border-radius: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; }
-        .btn-submit:hover:not(:disabled) { background: var(--gold-hover); transform: translateY(-2px); }
-        .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+        .book-info h3 { font-family: var(--font-h); color: #fff; margin-bottom: 10px; font-size: 1.1rem; }
+        .book-info p { font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px; color: var(--text-body); }
         
-        .fs-success-msg { display: none; color: #2ecc71; text-align: center; margin-bottom: 20px; font-weight: 600; }
-        .fs-error-msg { display: none; color: #e74c3c; text-align: center; margin-bottom: 20px; font-weight: 600; }
-        .field-error { color: #e74c3c; font-size: 0.75rem; margin-top: 5px; display: block; }
+        .btn-buy { 
+            font-size: 0.7rem; font-weight: 700; color: var(--gold); 
+            text-transform: uppercase; text-decoration: none; 
+            border: 1px solid var(--gold); padding: 8px 15px; border-radius: 3px;
+            display: inline-block; margin-right: 5px; transition: 0.3s;
+        }
+        .btn-buy:hover { background: var(--gold); color: #000; }
+        .btn-buy.disabled { opacity: 0.3; cursor: not-allowed; border-color: #444; color: #444; }
 
-        /* FOOTER */
-        footer { padding: 60px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.8rem; letter-spacing: 2px; }
+        /* FORMULÁRIO E MODAL (Igual ao anterior) */
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 0.7rem; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; font-weight: 700; }
+        .form-group input, .form-group textarea { width: 100%; background: #1a1b20; border: 1px solid var(--border); padding: 15px; color: #fff; font-family: var(--font-b); }
+        .btn-submit { background: var(--gold); color: #000; border: none; padding: 20px 40px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; width: 100%; transition: 0.3s; }
+        .btn-submit:hover { background: var(--gold-hover); }
 
-        /* MODAL */
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(8px); }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
         .modal.active { display: flex; }
-        .modal-content { background: var(--card-bg); padding: 40px; border: 1px solid var(--gold); text-align: center; max-width: 420px; border-radius: 12px; }
-        .btn-modal-close { background: none; border: 1px solid var(--text-muted); color: var(--text-muted); padding: 10px 25px; cursor: pointer; border-radius: 4px; text-transform: uppercase; font-size: 0.7rem; margin-top: 20px; }
+        .modal-content { background: var(--sidebar-bg); padding: 40px; border: 1px solid var(--gold); text-align: center; max-width: 400px; }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .stats { flex-direction: column; gap: 40px; }
+        @media (max-width: 1024px) {
+            body { flex-direction: column; }
+            aside.sidebar { width: 100%; height: auto; position: relative; padding: 40px 20px; border-right: none; }
+            main.content { margin-left: 0; padding: 40px 20px; }
+            .books-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container header-flex">
-            <div class="logo">Acervo Literário</div>
-            <nav class="nav-links">
-                <a href="#obras">Livros</a>
-                <a href="#sobre">O Autor</a>
-                <a href="#contato" class="btn-contact">Fale Conosco</a>
-            </nav>
+    <aside class="sidebar">
+        <div class="author-info">
+            <img src="author-Rom_Wedge_2.jpeg" alt="Autor" class="author-img">
+            <h1 class="author-name">Rom Wedge</h1>
+            <span class="author-title">Autor • Filólogo • Tradutor</span>
+            <p class="author-bio">
+                O autor mergulha profundamente nas intersecções entre a teologia bíblica e os dilemas da condição humana através do rigor filológico e exegético. <br>Cada livro traz um estudo criterioso das Escrituras, sempre à luz dos idiomas originais hebraico e grego, buscando o que cada texto realmente diz em sua origem. É com esse critério investigativo que seus livros se propõem a desvendar, com sabedoria, preciosos ensinamentos que ajudarão o leitor a se aproximar mais de Deus.
+            </p>
         </div>
-    </header>
+        <ul class="nav-menu">
+            <li><a href="#obras">Catálogo de Livros</a></li>
+            <li><a href="#contato">Fale Com o Autor</a></li>
+        </ul>
+    </aside>
 
-    <section class="hero">
-        <div class="container">
-            <span class="badge">Estudos Teológicos & Proféticos</span>
-            <h1>Verdades Reveladas Para<br>Tempos Decisivos</h1>
-            <p>Uma imersão literária nas profundezas das Escrituras, explorando os mistérios da alma, a precisão das profecias e a esperança do Evangelho.</p>
-            
-            <div class="hero-btns">
-                <a href="#obras" class="btn-primary">Ver Catálogo</a>
-                <a href="#sobre" class="btn-link">Conheça a Jornada →</a>
+    <main class="content">
+        <section id="hero">
+            <span class="section-label">Introdução</span>
+            <h2 class="hero-title">Verdades Reveladas Para Tempos Decisivos</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 80px;">Explorações literárias sobre os mistérios da alma e a precisão das profecias.</p>
+        </section>
+
+        <section id="obras">
+            <span class="section-label">Obras Literárias (Passe o mouse para ampliar)</span>
+            <div class="books-grid" id="grid">
+                <!-- Livros injetados via JS -->
             </div>
+        </section>
 
-            <div class="stats">
-                <div class="stat-item">
-                    <span class="stat-num">7</span>
-                    <span class="stat-label">Obras Publicadas</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-num">100%</span>
-                    <span class="stat-label">Rigor Bíblico</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-num">2</span>
-                    <span class="stat-label">Formatos Disponíveis</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="obras" class="container books-section">
-        <div class="books-grid" id="grid"></div>
-    </section>
-
-    <section id="sobre" class="about">
-        <div class="container about-flex">
-            <div class="about-img">
-                <img src="author-Rom_Wedge_2.jpeg" alt="Autor">
-            </div>
-            <div class="about-text">
-                <h2>Sobre o Autor</h2>
-                <p><strong>Autor, Filólogo, Tradutor,</strong> o autor dedica sua trajetória ao mergulho profundo nas intersecções entre a teologia bíblica e os dilemas da condição humana. Suas obras buscam decifrar os símbolos das profecias e as nuances da alma sob a luz das Escrituras.</p>
-                <p>Com um domínio técnico das linguagens bíblicas e um olhar atento à exegese, ele une o rigor acadêmico à sensibilidade narrativa, convidando o leitor a uma jornada de expansão intelectual e despertamento espiritual através da palavra escrita.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contato" class="contact-section">
-        <div class="container">
-            <div class="contact-header">
-                <span class="badge">Contato Direto</span>
-                <h2>Fale Conosco</h2>
-                <p>Envie sua mensagem e retornaremos o mais breve possível.</p>
-            </div>
-
-            <!-- MENSAGENS DE FEEDBACK DO FORMSPREE -->
-            <div id="fs-success" class="fs-success-msg" data-fs-success>Mensagem enviada com sucesso! Em breve entraremos em contato.</div>
-            <div id="fs-error" class="fs-error-msg" data-fs-error>Ocorreu um erro ao enviar. Por favor, tente novamente.</div>
-
-            <form id="contact-form" class="contact-form">
-                <div class="form-group">
-                    <label for="name">Nome Completo</label>
-                    <input type="text" id="name" name="name" placeholder="Seu nome" data-fs-field required>
-                    <span class="field-error" data-fs-error="name"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" data-fs-field required>
-                    <span class="field-error" data-fs-error="email"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="whatsapp">WhatsApp</label>
-                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" data-fs-field required>
-                    <span class="field-error" data-fs-error="whatsapp"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Sua Mensagem</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Como podemos ajudar?" data-fs-field required></textarea>
-                    <span class="field-error" data-fs-error="message"></span>
-                </div>
-
-                <button type="submit" class="btn-submit" data-fs-submit-btn>Enviar Mensagem</button>
+        <section id="contato" style="max-width: 700px;">
+            <span class="section-label">Contato</span>
+            <h2 style="font-family: var(--font-h); color: #fff; font-size: 2rem; margin-bottom: 30px;">Fale Com o Autor</h2>
+            <form id="contact-form">
+                <div class="form-group"><label>Nome</label><input type="text" name="name" required></div>
+                <div class="form-group"><label>E-mail</label><input type="email" name="email" required></div>
+                <div class="form-group"><label>WhatsApp</label><input type="tel" name="whatsapp" required></div>
+                <div class="form-group"><label>Mensagem</label><textarea name="message" rows="5" required></textarea></div>
+                <button type="submit" class="btn-submit">Enviar Mensagem</button>
             </form>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <div class="container">
-            &copy; 2026 TODOS OS DIREITOS RESERVADOS. PROPRIEDADE INTELECTUAL E LITERÁRIA.
-        </div>
-    </footer>
+        <footer style="margin-top: 100px; padding-bottom: 50px; font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px;">
+            © 2026 TODOS OS DIREITOS RESERVADOS.
+        </footer>
+    </main>
 
     <div id="modal" class="modal">
         <div class="modal-content">
-            <h3 style="font-family: var(--font-h); color: var(--gold); margin-bottom: 15px;">Obra em Lançamento</h3>
-            <p id="modal-msg"></p>
-            <button class="btn-modal-close" onclick="closeModal()">Entendido</button>
+            <h3 style="font-family: var(--font-h); color: var(--gold);">Em Breve</h3>
+            <p id="modal-msg" style="margin-top: 15px;"></p>
+            <button style="margin-top: 20px; background: none; border: 1px solid #444; color: #666; padding: 10px 20px; cursor: pointer;" onclick="closeModal()">FECHAR</button>
         </div>
     </div>
 
-    <!-- SCRIPTS FORMSPREE AJAX -->
-    <script>
-      window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-      formspree('initForm', { formElement: '#contact-form', formId: 'mjybobzn' });
-    </script>
-    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
-
-    <!-- SCRIPT DA PÁGINA -->
     <script>
         const books = [
-            { title: "A Marca da Besta", image: "amarca.png", desc: "Uma investigação profunda sobre as profecias do Apocalipse e o cenário global contemporâneo." },
-            { title: "Profecias Messiânicas e as Últimas 24hs de Jesus", image: "capa2.jpg", desc: "A exatidão das promessas bíblicas cumpridas integralmente nas horas finais de Cristo." },
-            { title: "Ao Pó Tornarás", image: "Ao_Po_Tornaras.png", desc: "Reflexões sobre a finitude humana e a esperança que triunfa sobre a transitoriedade." },
-            { title: "Alma é para o corpo - Espírito é para Deus, Vol I", image: "alma_I.png", desc: "Estudo sobre a natureza tripartida do homem: a distinção entre alma e espírito." },
-            { title: "Alma é para o corpo - Espírito é para Deus, Vol II", image: "capa5.jpg", desc: "O aprofundamento da conexão espiritual e a caminhada prática com o Criador." },
-            { title: "O Livro das Perguntas Difíceis da Fé", image: "perg_dificil.jpeg", desc: "Respostas fundamentadas para os dilemas mais complexos da caminhada cristã." },
-            { title: "As duas Testemunhas do Apocalipse", image: "capa7.jpg", desc: "Exegese detalhada sobre o papel e o impacto profético das testemunhas finais." }
+            { title: "A Marca da Besta", image: "amarca.png", desc: "Uma investigação profunda sobre as profecias do Apocalipse para os nossos dias." },
+            { title: "Profecias Messiânicas e as Últimas 24hs de Jesus", image: "profecias.png", desc: "Descubra todas as profecias que se cumpriram nas últimas 24hs da vida terrena de Jesus." },
+            { title: "Ao Pó Tornarás", image: "AoPoTornaras.jpg", desc: "Uma leitura indispensável para uma reflexão honesta sobre finitude humana e esperança cristã." },
+            { title: "Alma é para o corpo - Espírito é para Deus, Vol I", image: "alma_I.png", desc: "Depois deste livro, sua vida cristã e sua relação com Deus mudará para sempre. Surpreendente." },
+            { title: "Alma é para o corpo - Espírito é para Deus, Vol II", image: "alma_II.png", desc: "O Vol. II irá aprofundar ainda mais a sua conexão espiritual com o Criador. Uma leitura indispensável." },
+            { title: "O Livro das Perguntas Difíceis da Fé", image: "perg_dificil.jpeg", desc: "Dilemas e perguntas complexas que você certamente já se fez sobre Deus e talvez nunca obteve uma resposta fundamentada. Leitura reveladora." },
+            { title: "As duas Testemunhas do Apocalipse", image: "2witnesses.jpeg", desc: "Uma leitura que mudará o seu entendimento sobre esse tema. <b>As testemunhas não são duas pessoas.</b> Me acompanhe em uma exegese detalhada e surpreenda-se." }
         ];
 
         const grid = document.getElementById('grid');
         books.forEach(b => {
             grid.innerHTML += `
                 <div class="book-card">
-                    <div class="cover-container">
-                        <img src="${b.image}" alt="${b.title}" class="book-img" onerror="this.src='https://via.placeholder.com/180x260?text=Capa+Indisponivel'">
+                    <div class="book-cover-container" onmousemove="zoomIn(event)" onmouseleave="zoomOut(event)">
+                        <img src="${b.image}" alt="${b.title}" class="book-img-zoom" onerror="this.src='https://via.placeholder.com/160x240?text=Capa'">
                     </div>
-                    <h3 class="book-title">${b.title}</h3>
-                    <p class="book-desc">${b.desc}</p>
-                    <a class="btn-buy disabled" onclick="openModal('${b.title}', 'Impresso')">Livro Impresso</a>
-                    <a class="btn-buy disabled" onclick="openModal('${b.title}', 'Digital')">Versão Digital</a>
+                    <div class="book-info">
+                        <h3>${b.title}</h3>
+                        <p>${b.desc}</p>
+                        <a href="#" class="btn-buy disabled" onclick="openModal('${b.title}', 'Impresso')">Impresso</a>
+                        <a href="#" class="btn-buy disabled" onclick="openModal('${b.title}', 'Digital')">E-book</a>
+                    </div>
                 </div>
             `;
         });
 
+        // LÓGICA DO ZOOM (ESTILO AMAZON)
+        function zoomIn(event) {
+            const container = event.currentTarget;
+            const img = container.querySelector('img');
+            
+            // Calcula a posição do mouse relativa ao container
+            const rect = container.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 100;
+            const y = ((event.clientY - rect.top) / rect.height) * 100;
+            
+            // Move a origem do zoom para onde o mouse está apontando
+            img.style.transformOrigin = `${x}% ${y}%`;
+        }
+
+        function zoomOut(event) {
+            const img = event.currentTarget.querySelector('img');
+            img.style.transformOrigin = `center center`;
+        }
+
         function openModal(t, type) {
-            document.getElementById('modal-msg').innerHTML = `A versão <strong>${type}</strong> da obra <em>"${t}"</em> estará disponível em breve.`;
+            event.preventDefault();
+            document.getElementById('modal-msg').innerHTML = `A versão <strong>${type}</strong> de <em>"${t}"</em> está em fase de lançamento.`;
             document.getElementById('modal').classList.add('active');
         }
         function closeModal() { document.getElementById('modal').classList.remove('active'); }
+
+        const form = document.getElementById('contact-form');
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            await fetch('https://formspree.io/f/mjybobzn', {
+                method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
+            });
+            alert('Mensagem enviada!');
+            form.reset();
+        };
     </script>
 </body>
 </html>
