@@ -1,0 +1,79 @@
+:root {
+    --bg: #0c0d10;
+    --sidebar-bg: #111216;
+    --card-bg: #16171d;
+    --gold: #d4af37;
+    --text-body: #a0a5b5;
+    --border: rgba(255, 255, 255, 0.05);
+    --font-h: 'Cinzel', serif;
+    --font-b: 'Plus Jakarta Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background-color: var(--bg); color: var(--text-body); font-family: var(--font-b); display: flex; min-height: 100vh; }
+
+/* SIDEBAR */
+aside.sidebar {
+    width: 350px; background-color: var(--sidebar-bg); border-right: 1px solid var(--border);
+    height: 100vh; position: fixed; left: 0; top: 0; display: flex; flex-direction: column;
+    padding: 50px 30px; z-index: 1000; text-align: center;
+}
+.author-img { width: 140px; height: 140px; border-radius: 50%; border: 2px solid var(--gold); margin: 0 auto 25px; object-fit: cover; padding: 5px; }
+.author-name { font-family: var(--font-h); color: #fff; font-size: 1.6rem; margin-bottom: 8px; }
+.pseudonym { font-size: 0.85rem; color: var(--text-body); opacity: 0.7; margin-bottom: 5px; display: block; }
+.author-title { color: var(--gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; display: block; }
+.author-bio { font-size: 0.85rem; line-height: 1.6; text-align: justify; margin-bottom: 40px; opacity: 0.8; }
+.nav-menu { list-style: none; margin-top: auto; }
+.nav-menu a { color: #fff; text-decoration: none; font-family: var(--font-h); font-size: 0.85rem; opacity: 0.6; transition: 0.3s; display: block; margin-bottom: 15px; }
+.nav-menu a:hover { opacity: 1; color: var(--gold); }
+
+/* CONTEÚDO PRINCIPAL */
+main.content { margin-left: 350px; flex: 1; padding: 80px; max-width: 1200px; }
+.hero-title { font-family: var(--font-h); font-size: 3.2rem; color: #fff; line-height: 1.1; margin-bottom: 25px; text-align: left; }
+.hero-text { font-size: 16px; width: 100%; margin-bottom: 20px; line-height: 1.8; opacity: 0.9; }
+
+.acervo-label-container { text-align: left; margin-bottom: 40px; }
+.acervo-label { font-family: var(--font-h); color: var(--gold); font-size: 1.25rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+
+/* GRID DE LIVROS */
+.books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; margin-bottom: 100px; }
+.book-card { background: var(--card-bg); border: 1px solid var(--border); padding: 30px; border-radius: 4px; display: grid; grid-template-columns: 160px 1fr; gap: 30px; }
+.book-cover-container { width: 160px; height: 240px; overflow: hidden; border-radius: 4px; cursor: zoom-in; box-shadow: 10px 10px 20px rgba(0,0,0,0.5); background: #000; }
+.book-img-zoom { width: 100%; height: 100%; object-fit: cover; transition: transform 0.1s ease-out; transform-origin: center center; }
+.book-cover-container:hover .book-img-zoom { transform: scale(2.5); }
+.book-info h3 { font-family: var(--font-h); color: #fff; margin-bottom: 10px; font-size: 1.1rem; }
+.book-info p { font-size: 0.85rem; margin-bottom: 20px; line-height: 1.5; }
+
+/* BOTÕES BRANCOS COM HOVER DOURADO */
+.btn-buy { 
+    display: inline-block !important; font-size: 0.7rem !important; font-weight: 800 !important; color: #ffffff !important; 
+    border: 2px solid #ffffff !important; padding: 10px 15px !important; text-transform: uppercase !important;
+    text-decoration: none !important; border-radius: 4px !important; background: transparent !important;
+    transition: 0.3s all !important; margin-right: 8px; margin-bottom: 8px; cursor: pointer;
+}
+.btn-buy:hover { background-color: var(--gold) !important; border-color: var(--gold) !important; color: #000 !important; }
+.btn-buy.disabled { opacity: 0.5; border-color: rgba(255,255,255,0.6); }
+
+/* CONTATO */
+.contact-title { font-family: var(--font-h); color: #fff; margin-bottom: 30px; }
+.contact-form { max-width: 600px; background: var(--card-bg); padding: 40px; border: 1px solid var(--border); }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; color: var(--gold); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
+.form-group input, .form-group textarea { width: 100%; background: #000; border: 1px solid var(--border); padding: 12px; color: #fff; font-family: var(--font-b); }
+.btn-submit { width: 100%; padding: 20px; background: var(--gold); color: #000; border: none; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+.btn-submit:hover { background: var(--gold-hover); }
+
+/* MODAL & FOOTER */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
+.modal.active { display: flex; }
+.modal-content { background: var(--sidebar-bg); padding: 40px; border: 1px solid var(--gold); text-align: center; max-width: 450px; }
+.btn-modal-close { margin-top: 30px; background: none; border: 1px solid #fff; color: #fff; padding: 10px 20px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; font-weight: 700; }
+footer { margin-top: 120px; padding-bottom: 60px; font-size: 0.75rem; opacity: 0.5; letter-spacing: 2px; text-align: center; text-transform: uppercase; border-top: 1px solid var(--border); padding-top: 40px; }
+
+@media (max-width: 1024px) {
+    body { flex-direction: column; }
+    aside.sidebar { width: 100%; height: auto; position: relative; padding: 40px 20px; border-right: none; }
+    main.content { margin-left: 0; padding: 40px 20px; }
+    .books-grid { grid-template-columns: 1fr; }
+}

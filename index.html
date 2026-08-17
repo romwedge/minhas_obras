@@ -4,103 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acervo Literário | Autor, Filólogo e Tradutor</title>
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- CONFIGURAÇÕES DE DESIGN --- */
-        :root {
-            --bg: #0c0d10;
-            --sidebar-bg: #111216;
-            --card-bg: #16171d;
-            --gold: #d4af37;
-            --gold-hover: #b5932a;
-            --text-body: #a0a5b5;
-            --border: rgba(255, 255, 255, 0.05);
-            --font-h: 'Cinzel', serif;
-            --font-b: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg); color: var(--text-body); font-family: var(--font-b); display: flex; min-height: 100vh; }
-
-        /* SIDEBAR FIXA */
-        aside.sidebar {
-            width: 350px; background-color: var(--sidebar-bg); border-right: 1px solid var(--border);
-            height: 100vh; position: fixed; left: 0; top: 0; display: flex; flex-direction: column;
-            padding: 50px 30px; z-index: 1000; text-align: center;
-        }
-        .author-img { width: 140px; height: 140px; border-radius: 50%; border: 2px solid var(--gold); margin: 0 auto 25px; object-fit: cover; padding: 5px; }
-        .author-name { font-family: var(--font-h); color: #fff; font-size: 1.6rem; margin-bottom: 8px; }
-        .pseudonym { font-size: 0.85rem; color: var(--text-body); opacity: 0.7; margin-bottom: 5px; display: block; }
-        .author-title { color: var(--gold); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; display: block; }
-        .author-bio { font-size: 0.85rem; line-height: 1.6; text-align: justify; margin-bottom: 40px; opacity: 0.8; }
-        .nav-menu { list-style: none; margin-top: auto; }
-        .nav-menu a { color: #fff; text-decoration: none; font-family: var(--font-h); font-size: 0.85rem; opacity: 0.6; transition: 0.3s; display: block; margin-bottom: 15px; }
-        .nav-menu a:hover { opacity: 1; color: var(--gold); }
-
-        /* ÁREA PRINCIPAL */
-        main.content { margin-left: 350px; flex: 1; padding: 80px; max-width: 1200px; }
-        .hero-title { font-family: var(--font-h); font-size: 3.2rem; color: #fff; line-height: 1.1; margin-bottom: 25px; text-align: left; }
-
-        /* GRID E CARTÃO DE LIVRO */
-        .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; margin-bottom: 100px; }
-        .book-card { background: var(--card-bg); border: 1px solid var(--border); padding: 30px; border-radius: 4px; display: grid; grid-template-columns: 160px 1fr; gap: 30px; }
-        
-        /* ZOOM AMAZON */
-        .book-cover-container { width: 160px; height: 240px; overflow: hidden; border-radius: 4px; cursor: zoom-in; box-shadow: 10px 10px 20px rgba(0,0,0,0.5); }
-        .book-img-zoom { width: 100%; height: 100%; object-fit: cover; transition: transform 0.1s ease-out; transform-origin: center center; }
-        .book-cover-container:hover .book-img-zoom { transform: scale(2.5); }
-
-        .book-info h3 { font-family: var(--font-h); color: #fff; margin-bottom: 10px; font-size: 1.1rem; text-align: left; }
-        .book-info p { font-size: 0.85rem; margin-bottom: 20px; text-align: left; line-height: 1.5; }
-
-        /* BOTÕES: CONTORNO BRANCO REFORÇADO */
-        .btn-buy { 
-            display: inline-block !important;
-            font-size: 0.7rem !important; 
-            font-weight: 800 !important; 
-            color: #ffffff !important; 
-            border: 2px solid #ffffff !important; 
-            padding: 10px 15px !important; 
-            text-transform: uppercase !important;
-            text-decoration: none !important;
-            border-radius: 4px !important;
-            background: transparent !important;
-            transition: 0.3s all !important;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            cursor: pointer;
-        }
-        .btn-buy:hover { background-color: var(--gold) !important; border-color: var(--gold) !important; color: #000 !important; }
-        .btn-buy.disabled { opacity: 0.5; border-color: rgba(255,255,255,0.6); }
-
-        /* CONTATO */
-        .contact-form { max-width: 600px; background: var(--card-bg); padding: 40px; border: 1px solid var(--border); }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; color: var(--gold); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
-        .form-group input, .form-group textarea { width: 100%; background: #000; border: 1px solid var(--border); padding: 12px; color: #fff; font-family: var(--font-b); }
-        .btn-submit { width: 100%; padding: 20px; background: var(--gold); color: #000; border: none; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
-        .btn-submit:hover { background: var(--gold-hover); }
-
-        /* MODAL */
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
-        .modal.active { display: flex; }
-        .modal-content { background: var(--sidebar-bg); padding: 40px; border: 1px solid var(--gold); text-align: center; max-width: 450px; }
-
-        @media (max-width: 1024px) {
-            body { flex-direction: column; }
-            aside.sidebar { width: 100%; height: auto; position: relative; padding: 40px 20px; border-right: none; }
-            main.content { margin-left: 0; padding: 40px 20px; }
-            .books-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- SIDEBAR FIXA -->
     <aside class="sidebar">
         <div class="author-info">
             <img src="author-Rom_Wedge_2.jpeg" alt="Autor" class="author-img">
@@ -113,8 +25,6 @@
             <a href="#contato">Fale Com o Autor</a>
         </nav>
     </aside>
-
-    <!-- ÁREA PRINCIPAL -->
     <main class="content">
         <section id="hero">
             <h2 class="hero-title">Verdades Reveladas Para Tempos Decisivos</h2>
@@ -125,12 +35,9 @@
                 uma vida cristã consciente, intensa e equilibrada à luz das Sagradas Escrituras.
             </p>
         </section>
-<br><br>
-        <!-- TÍTULO ACERVO LITERÁRIO -->
-        <div style="text-align: left; margin-bottom: 40px;">
-            <h2 style="font-family: var(--font-h); color: var(--gold); font-size: 1.25rem; text-transform: uppercase; letter-spacing: 3px; margin: 0; font-weight: 700;">
-                Acervo Literário
-            </h2>
+
+        <div class="acervo-label-container">
+            <h2 class="acervo-label">Acervo Literário</h2>
         </div>
 
         <section id="obras">
@@ -138,7 +45,7 @@
         </section>
 
         <section id="contato">
-            <h2 style="font-family: var(--font-h); color: #fff; margin-bottom: 30px; text-align: left;">Fale Com o Autor</h2>
+            <h2 class="contact-title">Fale Conosco</h2>
             <form id="contact-form" class="contact-form">
                 <div class="form-group"><label>Nome</label><input type="text" name="name" required></div>
                 <div class="form-group"><label>E-mail</label><input type="email" name="email" required></div>
@@ -148,82 +55,20 @@
             </form>
         </section>
 
-        <footer style="margin-top: 100px; padding-bottom: 50px; font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px; text-align: center; text-transform: uppercase;">
-            © 2026 TODOS OS DIREITOS RESERVADOS. PROPRIEDADE LITERÁRIA.
+        <footer>
+            © 2026 ROM WEDGE EDIÇÕES - TODOS OS DIREITOS RESERVADOS. PROPRIEDADE INTELECTUAL E LITERÁRIA.
         </footer>
     </main>
 
-    <!-- MODAL -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <h3 style="font-family: var(--font-h); color: var(--gold);">Em Breve</h3>
-            <p id="modal-msg" style="margin-top: 20px; line-height: 1.6; color: #fff;"></p>
-            <button onclick="closeModal()" style="margin-top: 30px; background: none; border: 1px solid #fff; color: #fff; padding: 10px 20px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; font-weight: 700;">Fechar</button>
+            <h3 class="modal-title">Em Breve</h3>
+            <p id="modal-msg"></p>
+            <button class="btn-modal-close" onclick="closeModal()">Fechar</button>
         </div>
     </div>
 
-    <script>
-        const books = [
-            { title: "A Marca da Besta", image: "amarca.png", desc: "Uma investigação profunda sobre a revelação dessa profecia. <b>Você irá se surpreender</b> ao descobrir que esta realidade já começou a se revelar bem diante dos seus olhos." },
-            { title: "Profecias Messiânicas e as Últimas 24hs de Jesus", image: "profecias.png", desc: "Em nenhum ser humano, tantas profecias se cumpriram como em Jesus. Este livro reforçará os motivos que fizeram (ou farão) você crer nEle e em Suas palavras. <b>Esta obra merece sua atenção</b>." },
-            { title: "Ao Pó Tornarás", image: "AoPoTornaras.jpg", desc: "Não é você que vira pó... é o seu corpo. Uma leitura indispensável para uma reflexão honesta e profunda sobre finitude humana e esperança cristã. <b>Não deixe de ler esta obra</b>." },
-            { title: "Alma é para o corpo - Espírito é para Deus, Vol I", image: "alma_I.png", desc: "Depois de ler este livro, a maneira como você ora e a sua relação com Deus mudarão para sempre. <b>Uma leitura reveladora</b>." },
-            { title: "Alma é para o corpo - Espírito é para Deus, Vol II", image: "alma_II.png", desc: "O Vol. II desta série irá <b>aprofundar a sua conexão espiritual com o Criador</b>. Tudo o que você aprendeu na Bíblia será melhor compreendido de forma clara e renovadora." },
-            { title: "O Livro das Perguntas Difíceis da Fé", image: "perg_dificil.jpeg", desc: "Respostas sólidas para dúvidas inquietantes sobre a Fé. Um estudo minucioso que desata nós teológicos e propõe uma base fundamentada nas Escrituras para uma vida definitiva com Deus. <b>Inspirador e revelador</b>." },
-            { title: "As duas Testemunhas do Apocalipse", image: "2witnesses.jpeg", desc: "As testemunhas não são duas pessoas que voltam no fim dos tempos. Esta obra propõe um novo entendimento sobre essa profecia. <b>Prepare-se para uma descoberta surpreendente</b>." },
-            { title: "Houve um Homem na Terra de Uz", image: "Uz.png", desc: "Antes mesmo da Lei ser dada a Moisés no Sinai, um manuscrito já descrevia todo o plano de Deus com os homens. <b>Entenda o arquétipo Jó, a relação de Deus com o homem, e a intromissão de Satanás nessa relação</b>." }
-        ];
-
-        const grid = document.getElementById('grid');
-        books.forEach(b => {
-            grid.innerHTML += `
-                <div class="book-card">
-                    <div class="book-cover-container" onmousemove="zoomIn(event)" onmouseleave="zoomOut(event)">
-                        <img src="${b.image}" alt="${b.title}" class="book-img-zoom" onerror="this.src='https://via.placeholder.com/160x240?text=Capa'">
-                    </div>
-                    <div class="book-info">
-                        <h3>${b.title}</h3>
-                        <p>${b.desc}</p>
-                        <button class="btn-buy disabled" data-title="${b.title}" data-format="IMPRESSO">IMPRESSO</button>
-                        <button class="btn-buy disabled" data-title="${b.title}" data-format="DIGITAL">DIGITAL</button>
-                    </div>
-                </div>
-            `;
-        });
-
-        function zoomIn(e) {
-            const container = e.currentTarget;
-            const img = container.querySelector('img');
-            const rect = container.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            img.style.transformOrigin = `${x}% ${y}%`;
-        }
-        function zoomOut(e) { e.currentTarget.querySelector('img').style.transformOrigin = `center center`; }
-
-        document.addEventListener('click', function (e) {
-            if (e.target && e.target.classList.contains('btn-buy')) {
-                const title = e.target.getAttribute('data-title');
-                const format = e.target.getAttribute('data-format');
-                if (title && format) {
-                    const msg = document.getElementById('modal-msg');
-                    msg.innerHTML = `A versão <strong>${format}</strong> da obra <em>"${title}"</em> está sendo preparada para o lançamento oficial e estará disponível em breve.`;
-                    document.getElementById('modal').style.display = 'flex';
-                }
-            }
-        });
-
-        function closeModal() { document.getElementById('modal').style.display = 'none'; }
-
-        const form = document.getElementById('contact-form');
-        form.onsubmit = async (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
-            const response = await fetch('https://formspree.io/f/mjybobzn', {
-                method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
-            });
-            if (response.ok) { alert('Enviado com sucesso!'); form.reset(); }
-        };
-    </script>
+    <!-- Script Externo -->
+    <script src="script.js"></script>
 </body>
 </html>
