@@ -1,0 +1,318 @@
+/* --- 1. VARIÁVEIS E CONFIGURAÇÕES GERAIS --- */
+:root {
+    --bg: #0c0d10;
+    --sidebar-bg: #111216;
+    --card-bg: #16171d;
+    --gold: #d4af37;
+    --gold-hover: #b5932a;
+    --text-title: #f5f6fa;
+    --text-body: #a0a5b5;
+    --border: rgba(255, 255, 255, 0.05);
+    --font-h: 'Cinzel', serif;
+    --font-b: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-body);
+    font-family: var(--font-b);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- 2. SIDEBAR FIXA (ESQUERDA - INFOS CENTRALIZADAS) --- */
+aside.sidebar {
+    width: 350px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 35px;
+    z-index: 1000;
+    text-align: center; /* Centraliza todo o conteúdo interno */
+}
+
+.author-info {
+    margin-bottom: 40px;
+}
+
+.author-img { 
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    border: 2px solid var(--gold); 
+    object-fit: cover; 
+    margin: 0 auto 20px; 
+    padding: 5px;
+    display: block;
+}
+
+.author-name { 
+    font-family: var(--font-h); 
+    color: #fff; 
+    font-size: 1.5rem; 
+    margin-bottom: 8px; 
+}
+
+.pseudonym { 
+    font-size: 0.85rem; 
+    color: var(--text-body); 
+    opacity: 0.7; 
+    margin-bottom: 5px; 
+    display: block;
+}
+
+.author-title { 
+    color: var(--gold); 
+    font-size: 0.75rem; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    margin-bottom: 25px; 
+    display: block;
+}
+
+.author-bio { 
+    font-size: 0.85rem; 
+    line-height: 1.6; 
+    text-align: justify; 
+    margin-bottom: 40px; 
+    color: var(--text-body); 
+    opacity: 0.8; 
+}
+
+.nav-menu { 
+    list-style: none; 
+    margin-top: auto; 
+}
+
+.nav-menu li { margin-bottom: 18px; }
+
+.nav-menu a { 
+    color: #fff; 
+    text-decoration: none; 
+    font-family: var(--font-h); 
+    font-size: 0.85rem; 
+    letter-spacing: 1px; 
+    transition: 0.3s;
+    display: block; 
+    opacity: 0.6;
+}
+
+.nav-menu a:hover { 
+    opacity: 1; 
+    color: var(--gold); 
+}
+
+/* --- 3. CONTEÚDO PRINCIPAL (DIREITA) --- */
+main.content {
+    margin-left: 350px;
+    flex: 1;
+    padding: 80px;
+    max-width: 1200px;
+}
+
+.section-label { 
+    font-size: 0.7rem; 
+    color: var(--gold); 
+    font-weight: 700; 
+    letter-spacing: 4px; 
+    text-transform: uppercase; 
+    margin-bottom: 20px; 
+    display: block; 
+}
+
+.hero-title { 
+    font-family: var(--font-h); 
+    font-size: clamp(2.5rem, 5vw, 3.5rem); 
+    color: #fff; 
+    line-height: 1.1; 
+    margin-bottom: 30px; 
+}
+
+/* --- 4. GRID DE LIVROS E EFEITO ZOOM --- */
+.books-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); 
+    gap: 40px; 
+    margin-bottom: 120px; 
+}
+
+.book-card { 
+    background: var(--card-bg); 
+    border: 1px solid var(--border); 
+    padding: 30px; 
+    border-radius: 4px; 
+    display: grid; 
+    grid-template-columns: 160px 1fr; 
+    gap: 30px; 
+    transition: 0.3s;
+}
+
+.book-card:hover { border-color: rgba(255,255,255,0.1); }
+
+/* CONTÊINER ZOOM ESTILO AMAZON */
+.book-cover-container {
+    width: 160px;
+    height: 240px;
+    overflow: hidden; 
+    border-radius: 4px;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+    cursor: zoom-in;
+    background: #000;
+}
+
+.book-img-zoom {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.1s ease-out; 
+    transform-origin: center center;
+}
+
+.book-cover-container:hover .book-img-zoom {
+    transform: scale(2.5); /* Nível do Zoom */
+}
+
+.book-info h3 { font-family: var(--font-h); color: #fff; margin-bottom: 12px; font-size: 1.1rem; }
+.book-info p { font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px; color: var(--text-body); }
+
+/* --- 5. BOTÕES IMPRESSO/DIGITAL (CONTORNO BRANCO) --- */
+/* --- BOTÕES COM CONTORNO BRANCO REFORÇADO --- */
+.book-info .btn-buy { 
+    display: inline-block !important;
+    font-size: 0.7rem !important; 
+    font-weight: 800 !important; 
+    color: #ffffff !important; 
+    text-transform: uppercase !important; 
+    text-decoration: none !important; 
+    
+    /* Contorno branco nítido */
+    border: 2px solid #ffffff !important; 
+    
+    padding: 10px 15px !important; 
+    border-radius: 4px !important; 
+    margin-right: 8px !important;
+    margin-bottom: 8px !important;
+    background: transparent !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+/* EFEITO HOVER DOURADO (VOLTANDO AO ANTERIOR) */
+.book-info .btn-buy:hover:not(.disabled) { 
+    background: var(--gold) !important; /* Cor Dourada */
+    border-color: var(--gold) !important; /* Borda também fica dourada */
+    color: #000000 !important; /* Texto fica preto para contraste */
+}
+
+/* Estado desativado (Manter branco suave) */
+.book-info .btn-buy.disabled { 
+    opacity: 0.4 !important; 
+    cursor: not-allowed !important; 
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* --- 6. SEÇÃO DE CONTATO --- */
+.contact-section { max-width: 700px; margin-top: 100px; }
+
+.form-group { margin-bottom: 20px; }
+.form-group label { 
+    display: block; font-size: 0.7rem; text-transform: uppercase; 
+    color: var(--gold); margin-bottom: 8px; font-weight: 700; 
+}
+
+.form-group input, 
+.form-group textarea { 
+    width: 100%; 
+    background: #1a1b20; 
+    border: 1px solid var(--border); 
+    padding: 15px; 
+    color: #fff; 
+    font-family: var(--font-b); 
+}
+
+.form-group input:focus, 
+.form-group textarea:focus { outline: none; border-color: var(--gold); }
+
+.btn-submit { 
+    background: var(--gold); 
+    color: #000; 
+    border: none; 
+    padding: 20px; 
+    font-weight: 900; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    cursor: pointer; 
+    width: 100%; 
+    transition: 0.3s;
+}
+
+.btn-submit:hover { background: var(--gold-hover); }
+
+/* --- 7. MODAL E FOOTER --- */
+.modal { 
+    display: none; 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.95); 
+    z-index: 2000; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+}
+
+.modal.active { display: flex; }
+
+.modal-content { 
+    background: var(--sidebar-bg); 
+    padding: 40px; 
+    border: 1px solid var(--gold); 
+    text-align: center; 
+    max-width: 420px; 
+    border-radius: 4px;
+}
+
+footer { 
+    margin-top: 120px; 
+    padding-bottom: 50px; 
+    font-size: 0.7rem; 
+    opacity: 0.4; 
+    letter-spacing: 2px; 
+    text-align: center; 
+    text-transform: uppercase;
+}
+
+/* --- 8. RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 1024px) {
+    body { flex-direction: column; }
+    aside.sidebar { 
+        width: 100%; 
+        height: auto; 
+        position: relative; 
+        padding: 40px 20px; 
+        border-right: none; 
+        border-bottom: 1px solid var(--border);
+    }
+    main.content { 
+        margin-left: 0; 
+        padding: 40px 20px; 
+    }
+    .hero-title { font-size: 2.2rem; }
+    .books-grid { grid-template-columns: 1fr; }
+}
