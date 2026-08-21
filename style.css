@@ -71,58 +71,50 @@ main.content { margin-left: 350px; flex: 1; padding: 80px; max-width: 1200px; }
 .btn-modal-close { margin-top: 30px; background: none; border: 1px solid #fff; color: #fff; padding: 10px 20px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; font-weight: 700; }
 footer { margin-top: 120px; padding-bottom: 60px; font-size: 0.75rem; opacity: 0.5; letter-spacing: 2px; text-align: center; text-transform: uppercase; border-top: 1px solid var(--border); padding-top: 40px; }
 
+/* --- RESPONSIVIDADE (MOBILE) --- */
 @media (max-width: 1024px) {
-    body { flex-direction: column; }
-    aside.sidebar { width: 100%; height: auto; position: relative; padding: 40px 20px; border-right: none; }
-    main.content { margin-left: 0; padding: 40px 20px; }
-    .books-grid { grid-template-columns: 1fr; }
-}
-/* --- ESTILO DICAS DE LEITURA --- */
-.dicas-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Duas colunas em telas grandes */
-    gap: 30px;
-    margin-bottom: 100px;
-}
+    body { 
+        flex-direction: column; /* Empilha sidebar e conteúdo */
+    }
 
-.dica-item {
-    background: var(--card-bg);
-    padding: 30px;
-    border-left: 3px solid var(--gold);
-    border-radius: 0 4px 4px 0;
-    position: relative;
-    transition: 0.3s;
-}
+    aside.sidebar { 
+        width: 100%; 
+        height: auto; 
+        position: relative; /* Para de ser fixa no lado e fica no topo */
+        padding: 40px 20px; 
+        border-right: none; 
+        border-bottom: 1px solid var(--border);
+    }
 
-.dica-item:hover {
-    background: #1c1e26;
-    transform: translateX(5px);
-}
+    main.content { 
+        margin-left: 0; /* IMPORTANTE: Remove o espaço da sidebar para o conteúdo aparecer */
+        padding: 40px 20px; 
+        width: 100%;
+    }
 
-.dica-num {
-    display: block;
-    font-family: var(--font-h);
-    color: var(--gold);
-    font-size: 0.8rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    opacity: 0.6;
-}
+    .hero-title { 
+        font-size: 2.2rem; 
+    }
 
-.dica-item p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-body);
-    margin: 0;
-}
+    .books-grid { 
+        grid-template-columns: 1fr; /* Livros um embaixo do outro */
+    }
 
-.dica-item strong {
-    color: #fff;
-}
-
-/* Ajuste para telas menores */
-@media (max-width: 768px) {
     .dicas-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important; /* Dicas uma embaixo da outra */
+        gap: 20px;
+    }
+
+    .book-card {
+        grid-template-columns: 1fr; /* Capa em cima, texto embaixo no card */
+        text-align: center;
+    }
+
+    .book-cover-container {
+        margin: 0 auto; /* Centraliza a capa no celular */
+    }
+    
+    .book-info h3, .book-info p {
+        text-align: center; /* Centraliza textos dos livros no celular */
     }
 }
