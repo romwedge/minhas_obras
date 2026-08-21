@@ -77,3 +77,52 @@ footer { margin-top: 120px; padding-bottom: 60px; font-size: 0.75rem; opacity: 0
     main.content { margin-left: 0; padding: 40px 20px; }
     .books-grid { grid-template-columns: 1fr; }
 }
+/* --- ESTILO DICAS DE LEITURA --- */
+.dicas-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas em telas grandes */
+    gap: 30px;
+    margin-bottom: 100px;
+}
+
+.dica-item {
+    background: var(--card-bg);
+    padding: 30px;
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    position: relative;
+    transition: 0.3s;
+}
+
+.dica-item:hover {
+    background: #1c1e26;
+    transform: translateX(5px);
+}
+
+.dica-num {
+    display: block;
+    font-family: var(--font-h);
+    color: var(--gold);
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    opacity: 0.6;
+}
+
+.dica-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-body);
+    margin: 0;
+}
+
+.dica-item strong {
+    color: #fff;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    .dicas-container {
+        grid-template-columns: 1fr;
+    }
+}
