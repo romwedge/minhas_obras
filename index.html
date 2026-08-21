@@ -13,23 +13,29 @@
 </head>
 <body>
 
+    <!-- LADO ESQUERDO: SIDEBAR FIXA -->
     <aside class="sidebar">
         <div class="author-info">
             <img src="author-Rom_Wedge_2.jpeg" alt="Autor" class="author-img">
             <h1 class="author-name">Rom Wedge</h1>
+            <span class="pseudonym">Pseudônimo literário de Romildo Cunha</span>
             <span class="author-title">Autor • Filólogo • Tradutor</span>
-            <p class="author-bio">O autor mergulha profundamente nas intersecções entre a teologia bíblica e os dilemas da condição humana através do rigor filológico e exegético.<br><br>Em cada livro, Rom Wedge faz um estudo criterioso das Escrituras, à luz dos idiomas originais hebraico e grego, preservando a integridade e a essência de cada texto, revelando preciosos ensinamentos que ajudarão o leitor a ampliar a compreensão de cada tema e, mais importante, a se aproximar mais de Deus..</p>
+            <p class="author-bio">Dedicado ao mergulho profundo nas intersecções entre a teologia bíblica e os dilemas da condição humana através do rigor filológico e exegético.</p>
         </div>
-<nav class="nav-menu">
-    <a href="#obras">Catálogo de Livros</a>
-    <a href="#dicas">Dicas de Leitura</a> <!-- NOVO LINK -->
-    <a href="#contato">Fale Com o Autor</a>
-</nav>
+        <nav class="nav-menu">
+            <a href="#obras">Catálogo de Livros</a>
+            <a href="#dicas">Dicas de Leitura</a> <!-- Link adicionado -->
+            <a href="#contato">Fale Com o Autor</a>
+        </nav>
     </aside>
+
+    <!-- LADO DIREITO: CONTEÚDO PRINCIPAL -->
     <main class="content">
+        
+        <!-- Introdução -->
         <section id="hero">
             <h2 class="hero-title">Verdades Reveladas Para Tempos Decisivos</h2>
-            <p style="font-size: 16px; width: 100%; margin: 0 0 20px 0; line-height: 1.8; color: var(--text-body); font-weight: 400; opacity: 0.9; text-align: left;">
+            <p class="hero-intro-text">
                 Uma coleção de obras fundamentadas no rigor bíblico e na exegese, desenvolvida para oferecer clareza e profundidade ao leitor. 
                 Estes escritos ampliam a compreensão sobre os mistérios da vida e da morte, a estrutura tripartida do ser — <strong>corpo, alma e espírito</strong> — 
                 e a exatidão das profecias em sua relação com o século XXI. Uma jornada literária para eliminar a confusão espiritual e cultivar 
@@ -37,54 +43,57 @@
             </p>
         </section>
 
-        <div class="acervo-label-container">
-            <h2 class="acervo-label">Acervo Literário</h2>
+        <!-- Seção do Catálogo -->
+        <div class="section-divider-title">
+            <h2 class="gold-label">Acervo Literário</h2>
         </div>
 
         <section id="obras">
-            <div class="books-grid" id="grid"></div>
+            <div class="books-grid" id="grid">
+                <!-- Os livros são injetados aqui pelo script.js -->
+            </div>
         </section>
-<!-- SEÇÃO DICAS DE LEITURA -->
-<section id="dicas" style="margin-top: 100px;">
-    <div style="text-align: left; margin-bottom: 40px;">
-        <h2 style="font-family: var(--font-h); color: var(--gold); font-size: 1.25rem; text-transform: uppercase; letter-spacing: 3px; margin: 0; font-weight: 700;">
-            Dicas de Leitura
-        </h2>
-    </div>
 
-    <div class="dicas-container">
-        <div class="dica-item">
-            <span class="dica-num">01</span>
-            <p><strong>COMBO:</strong> A obra <em>Ao Pó Tornarás</em> é melhor compreendida quando lida em conjunto com <em>Alma e Espírito Vol I e Vol II</em>. Juntas, formam um mapa completo da natureza humana sob a ótica divina.</p>
-        </div>
+        <!-- Seção de Dicas de Leitura -->
+        <section id="dicas" class="dicas-section">
+            <div class="section-divider-title">
+                <h2 class="gold-label">Dicas de Leitura</h2>
+            </div>
 
-        <div class="dica-item">
-            <span class="dica-num">02</span>
-            <p><strong>A Marca da Besta:</strong> Aborda temas urgentes sobre a economia global, tecnologias de identificação e controle digital, oferecendo uma diretriz bíblica sobre como se posicionar diante desses avanços.</p>
-        </div>
+            <div class="dicas-container">
+                <div class="dica-item">
+                    <span class="dica-num">01</span>
+                    <p><strong>COMBO:</strong> A obra <em>Ao Pó Tornarás</em> é melhor compreendida quando lida em conjunto com <em>Alma e Espírito Vol I e Vol II</em>. Juntas, formam um mapa completo da natureza humana sob a ótica divina.</p>
+                </div>
 
-        <div class="dica-item">
-            <span class="dica-num">03</span>
-            <p><strong>Profecias Messiânicas:</strong> Recomendado tanto para quem deseja aprofundar uma fé já existente quanto para quem busca evidências arqueológicas e teológicas consistentes para fundamentar sua crença em Cristo.</p>
-        </div>
+                <div class="dica-item">
+                    <span class="dica-num">02</span>
+                    <p><strong>A Marca da Besta:</strong> Aborda temas atuais sobre economia, tecnologia de identificação, controle digital e o que fazer diante de tudo isso sob uma perspectiva bíblica profética.</p>
+                </div>
 
-        <div class="dica-item">
-            <span class="dica-num">04</span>
-            <p><strong>Perguntas Difíceis da Fé:</strong> Um livro de temas provocantes que aguçará sua reflexão sobre dilemas complexos. O propósito aqui é deixar que a própria Bíblia responda às suas dúvidas mais profundas sobre a Fé.</p>
-        </div>
+                <div class="dica-item">
+                    <span class="dica-num">03</span>
+                    <p><strong>Profecias Messiânicas:</strong> Traz informações arqueológicas e teológicas que aumentam a fé de quem já crê e ajuda o descrente a decidir sobre as evidências autênticas da vida de Cristo.</p>
+                </div>
 
-        <div class="dica-item">
-            <span class="dica-num">05</span>
-            <p><strong>As Duas Testemunhas:</strong> Recomendado para quem busca uma resposta teológica clara e definitiva sobre esse tema, frequentemente mal interpretado por gerações.</p>
-        </div>
+                <div class="dica-item">
+                    <span class="dica-num">04</span>
+                    <p><strong>Perguntas Difíceis da Fé:</strong> Livro com temas provocantes que aguçará a reflexão sobre dilemas complexos. O propósito é deixar a própria Bíblia responder — está tudo lá.</p>
+                </div>
 
-        <div class="dica-item">
-            <span class="dica-num">06</span>
-            <p><strong>Houve um Homem na Terra de Uz:</strong> Leitura ideal para refletir sobre as raízes da fé antes mesmo da Lei ser dada a Moisés no Sinai. Explora o mais antigo dos livros. Uma leitura reveladora.</p>
-        </div>
-    </div>
-</section>
+                <div class="dica-item">
+                    <span class="dica-num">05</span>
+                    <p><strong>As Duas Testemunhas:</strong> Irá surpreender o leitor que busca uma resposta clara e teológica sobre esse tema, muito falado e mal interpretado por gerações.</p>
+                </div>
 
+                <div class="dica-item">
+                    <span class="dica-num">06</span>
+                    <p><strong>Houve um Homem em Uz:</strong> Para quem busca manuscritos anteriores a Moisés que conduziram antecessores a crerem em Deus antes da Lei no Sinai. Uma leitura intensa e reveladora.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
         <section id="contato">
             <h2 class="contact-title">Fale Com o Autor</h2>
             <form id="contact-form" class="contact-form">
@@ -96,14 +105,16 @@
             </form>
         </section>
 
+        <!-- Rodapé -->
         <footer>
-            © 2026 ROM WEDGE EDIÇÕES - TODOS OS DIREITOS RESERVADOS. PROPRIEDADE INTELECTUAL E LITERÁRIA.
+            © 2026 TODOS OS DIREITOS RESERVADOS. PROPRIEDADE INTELECTUAL E LITERÁRIA.
         </footer>
     </main>
 
+    <!-- Modal de Aviso -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <h3 class="modal-title">Em Breve</h3>
+            <h3 class="modal-title-text">Em Breve</h3>
             <p id="modal-msg"></p>
             <button class="btn-modal-close" onclick="closeModal()">Fechar</button>
         </div>

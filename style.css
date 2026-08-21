@@ -1,8 +1,11 @@
+/* --- 1. VARIÁVEIS E CONFIGURAÇÕES GERAIS --- */
 :root {
     --bg: #0c0d10;
     --sidebar-bg: #111216;
     --card-bg: #16171d;
     --gold: #d4af37;
+    --gold-hover: #b5932a;
+    --text-title: #f5f6fa;
     --text-body: #a0a5b5;
     --border: rgba(255, 255, 255, 0.05);
     --font-h: 'Cinzel', serif;
@@ -13,7 +16,7 @@
 html { scroll-behavior: smooth; }
 body { background-color: var(--bg); color: var(--text-body); font-family: var(--font-b); display: flex; min-height: 100vh; }
 
-/* SIDEBAR */
+/* --- 2. SIDEBAR FIXA (DESKTOP) --- */
 aside.sidebar {
     width: 350px; background-color: var(--sidebar-bg); border-right: 1px solid var(--border);
     height: 100vh; position: fixed; left: 0; top: 0; display: flex; flex-direction: column;
@@ -28,93 +31,85 @@ aside.sidebar {
 .nav-menu a { color: #fff; text-decoration: none; font-family: var(--font-h); font-size: 0.85rem; opacity: 0.6; transition: 0.3s; display: block; margin-bottom: 15px; }
 .nav-menu a:hover { opacity: 1; color: var(--gold); }
 
-/* CONTEÚDO PRINCIPAL */
+/* --- 3. CONTEÚDO PRINCIPAL (DESKTOP) --- */
 main.content { margin-left: 350px; flex: 1; padding: 80px; max-width: 1200px; }
-.hero-title { font-family: var(--font-h); font-size: 3.2rem; color: #fff; line-height: 1.1; margin-bottom: 25px; text-align: left; }
-.hero-text { font-size: 16px; width: 100%; margin-bottom: 20px; line-height: 1.8; opacity: 0.9; }
+.hero-title { font-family: var(--font-h); font-size: 3.2rem; color: #fff; line-height: 1.1; margin-bottom: 25px; }
+.hero-intro-text { font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
 
-.acervo-label-container { text-align: left; margin-bottom: 40px; }
-.acervo-label { font-family: var(--font-h); color: var(--gold); font-size: 1.25rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+/* Títulos de seção */
+.section-divider-title { text-align: left; margin-top: 60px; margin-bottom: 40px; }
+.gold-label { font-family: var(--font-h); color: var(--gold); font-size: 1.25rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
 
-/* GRID DE LIVROS */
+/* Grid de Livros */
 .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; margin-bottom: 100px; }
 .book-card { background: var(--card-bg); border: 1px solid var(--border); padding: 30px; border-radius: 4px; display: grid; grid-template-columns: 160px 1fr; gap: 30px; }
 .book-cover-container { width: 160px; height: 240px; overflow: hidden; border-radius: 4px; cursor: zoom-in; box-shadow: 10px 10px 20px rgba(0,0,0,0.5); background: #000; }
 .book-img-zoom { width: 100%; height: 100%; object-fit: cover; transition: transform 0.1s ease-out; transform-origin: center center; }
 .book-cover-container:hover .book-img-zoom { transform: scale(2.5); }
-.book-info h3 { font-family: var(--font-h); color: #fff; margin-bottom: 10px; font-size: 1.1rem; }
+.book-info h3 { font-family: var(--font-h); color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
 .book-info p { font-size: 0.85rem; margin-bottom: 20px; line-height: 1.5; }
 
-/* BOTÕES BRANCOS COM HOVER DOURADO */
+/* Botões */
 .btn-buy { 
-    display: inline-block !important; font-size: 0.7rem !important; font-weight: 800 !important; color: #ffffff !important; 
-    border: 2px solid #ffffff !important; padding: 10px 15px !important; text-transform: uppercase !important;
-    text-decoration: none !important; border-radius: 4px !important; background: transparent !important;
-    transition: 0.3s all !important; margin-right: 8px; margin-bottom: 8px; cursor: pointer;
+    display: inline-block; font-size: 0.7rem; font-weight: 800; color: #fff; border: 2px solid #fff; 
+    padding: 10px 15px; text-transform: uppercase; border-radius: 4px; transition: 0.3s; cursor: pointer; background: none; margin-right: 5px; margin-bottom: 5px;
 }
-.btn-buy:hover { background-color: var(--gold) !important; border-color: var(--gold) !important; color: #000 !important; }
-.btn-buy.disabled { opacity: 0.5; border-color: rgba(255,255,255,0.6); }
+.btn-buy:hover { background: var(--gold); border-color: var(--gold); color: #000; }
+.btn-buy.disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* CONTATO */
+/* --- 4. DICAS DE LEITURA --- */
+.dicas-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 100px; }
+.dica-item { background: var(--card-bg); padding: 30px; border-left: 3px solid var(--gold); transition: 0.3s; }
+.dica-num { display: block; color: var(--gold); font-family: var(--font-h); font-weight: 700; margin-bottom: 10px; opacity: 0.5; }
+
+/* --- 5. CONTATO E FOOTER --- */
 .contact-title { font-family: var(--font-h); color: #fff; margin-bottom: 30px; }
 .contact-form { max-width: 600px; background: var(--card-bg); padding: 40px; border: 1px solid var(--border); }
 .form-group { margin-bottom: 20px; }
 .form-group label { display: block; color: var(--gold); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
 .form-group input, .form-group textarea { width: 100%; background: #000; border: 1px solid var(--border); padding: 12px; color: #fff; font-family: var(--font-b); }
 .btn-submit { width: 100%; padding: 20px; background: var(--gold); color: #000; border: none; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
-.btn-submit:hover { background: var(--gold-hover); }
+footer { margin-top: 100px; padding-bottom: 50px; font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px; text-align: center; }
 
-/* MODAL & FOOTER */
-.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
-.modal.active { display: flex; }
-.modal-content { background: var(--sidebar-bg); padding: 40px; border: 1px solid var(--gold); text-align: center; max-width: 450px; }
-.btn-modal-close { margin-top: 30px; background: none; border: 1px solid #fff; color: #fff; padding: 10px 20px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; font-weight: 700; }
-footer { margin-top: 120px; padding-bottom: 60px; font-size: 0.75rem; opacity: 0.5; letter-spacing: 2px; text-align: center; text-transform: uppercase; border-top: 1px solid var(--border); padding-top: 40px; }
-
-/* --- RESPONSIVIDADE (MOBILE) --- */
+/* --- 6. ADAPTAÇÃO PARA SMARTPHONE (MOBILE) --- */
 @media (max-width: 1024px) {
-    body { 
-        flex-direction: column; /* Empilha sidebar e conteúdo */
-    }
+    body { flex-direction: column; } /* Sidebar vai para o topo */
 
     aside.sidebar { 
         width: 100%; 
         height: auto; 
-        position: relative; /* Para de ser fixa no lado e fica no topo */
+        position: relative; /* Destrava a sidebar do lado esquerdo */
         padding: 40px 20px; 
         border-right: none; 
         border-bottom: 1px solid var(--border);
     }
 
     main.content { 
-        margin-left: 0; /* IMPORTANTE: Remove o espaço da sidebar para o conteúdo aparecer */
+        margin-left: 0; /* REMOVE O BURACO DE 350px NO CELULAR */
         padding: 40px 20px; 
         width: 100%;
     }
 
-    .hero-title { 
-        font-size: 2.2rem; 
-    }
+    .hero-title { font-size: 2.2rem; text-align: center; }
+    .hero-intro-text { text-align: justify; }
 
-    .books-grid { 
-        grid-template-columns: 1fr; /* Livros um embaixo do outro */
-    }
+    .section-divider-title { text-align: center; }
 
-    .dicas-container {
-        grid-template-columns: 1fr !important; /* Dicas uma embaixo da outra */
-        gap: 20px;
+    .books-grid { grid-template-columns: 1fr; } /* Um livro por linha */
+    .book-card { 
+        grid-template-columns: 1fr; /* Capa em cima, texto embaixo */
+        text-align: center; 
     }
+    .book-cover-container { margin: 0 auto; } /* Centraliza a capa */
+    .book-info h3, .book-info p { text-align: center; }
 
-    .book-card {
-        grid-template-columns: 1fr; /* Capa em cima, texto embaixo no card */
-        text-align: center;
-    }
-
-    .book-cover-container {
-        margin: 0 auto; /* Centraliza a capa no celular */
-    }
+    .dicas-container { grid-template-columns: 1fr; } /* Uma dica por linha */
     
-    .book-info h3, .book-info p {
-        text-align: center; /* Centraliza textos dos livros no celular */
-    }
+    .contact-form { padding: 20px; }
 }
+
+/* --- 7. MODAL --- */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+.modal.active { display: flex; }
+.modal-content { background: var(--sidebar-bg); padding: 40px; border: 1px solid var(--gold); text-align: center; max-width: 450px; }
+.btn-modal-close { margin-top: 30px; background: none; border: 1px solid #fff; color: #fff; padding: 10px 20px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; font-weight: 700; }
