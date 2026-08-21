@@ -1,11 +1,8 @@
-/* --- 1. VARIÁVEIS E CONFIGURAÇÕES GERAIS --- */
 :root {
     --bg: #0c0d10;
     --sidebar-bg: #111216;
     --card-bg: #16171d;
     --gold: #d4af37;
-    --gold-hover: #b5932a;
-    --text-title: #f5f6fa;
     --text-body: #a0a5b5;
     --border: rgba(255, 255, 255, 0.05);
     --font-h: 'Cinzel', serif;
@@ -16,7 +13,7 @@
 html { scroll-behavior: smooth; }
 body { background-color: var(--bg); color: var(--text-body); font-family: var(--font-b); display: flex; min-height: 100vh; }
 
-/* --- 2. SIDEBAR FIXA (DESKTOP) --- */
+/* SIDEBAR */
 aside.sidebar {
     width: 350px; background-color: var(--sidebar-bg); border-right: 1px solid var(--border);
     height: 100vh; position: fixed; left: 0; top: 0; display: flex; flex-direction: column;
@@ -31,85 +28,143 @@ aside.sidebar {
 .nav-menu a { color: #fff; text-decoration: none; font-family: var(--font-h); font-size: 0.85rem; opacity: 0.6; transition: 0.3s; display: block; margin-bottom: 15px; }
 .nav-menu a:hover { opacity: 1; color: var(--gold); }
 
-/* --- 3. CONTEÚDO PRINCIPAL (DESKTOP) --- */
+/* CONTEÚDO PRINCIPAL */
 main.content { margin-left: 350px; flex: 1; padding: 80px; max-width: 1200px; }
-.hero-title { font-family: var(--font-h); font-size: 3.2rem; color: #fff; line-height: 1.1; margin-bottom: 25px; }
-.hero-intro-text { font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+.hero-title { font-family: var(--font-h); font-size: 3.2rem; color: #fff; line-height: 1.1; margin-bottom: 25px; text-align: left; }
+.hero-text { font-size: 16px; width: 100%; margin-bottom: 20px; line-height: 1.8; opacity: 0.9; }
 
-/* Títulos de seção */
-.section-divider-title { text-align: left; margin-top: 60px; margin-bottom: 40px; }
-.gold-label { font-family: var(--font-h); color: var(--gold); font-size: 1.25rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+.acervo-label-container { text-align: left; margin-bottom: 40px; }
+.acervo-label { font-family: var(--font-h); color: var(--gold); font-size: 1.25rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
 
-/* Grid de Livros */
+/* GRID DE LIVROS */
 .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; margin-bottom: 100px; }
 .book-card { background: var(--card-bg); border: 1px solid var(--border); padding: 30px; border-radius: 4px; display: grid; grid-template-columns: 160px 1fr; gap: 30px; }
 .book-cover-container { width: 160px; height: 240px; overflow: hidden; border-radius: 4px; cursor: zoom-in; box-shadow: 10px 10px 20px rgba(0,0,0,0.5); background: #000; }
 .book-img-zoom { width: 100%; height: 100%; object-fit: cover; transition: transform 0.1s ease-out; transform-origin: center center; }
 .book-cover-container:hover .book-img-zoom { transform: scale(2.5); }
-.book-info h3 { font-family: var(--font-h); color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
+.book-info h3 { font-family: var(--font-h); color: #fff; margin-bottom: 10px; font-size: 1.1rem; }
 .book-info p { font-size: 0.85rem; margin-bottom: 20px; line-height: 1.5; }
 
-/* Botões */
+/* BOTÕES BRANCOS COM HOVER DOURADO */
 .btn-buy { 
-    display: inline-block; font-size: 0.7rem; font-weight: 800; color: #fff; border: 2px solid #fff; 
-    padding: 10px 15px; text-transform: uppercase; border-radius: 4px; transition: 0.3s; cursor: pointer; background: none; margin-right: 5px; margin-bottom: 5px;
+    display: inline-block !important; font-size: 0.7rem !important; font-weight: 800 !important; color: #ffffff !important; 
+    border: 2px solid #ffffff !important; padding: 10px 15px !important; text-transform: uppercase !important;
+    text-decoration: none !important; border-radius: 4px !important; background: transparent !important;
+    transition: 0.3s all !important; margin-right: 8px; margin-bottom: 8px; cursor: pointer;
 }
-.btn-buy:hover { background: var(--gold); border-color: var(--gold); color: #000; }
-.btn-buy.disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-buy:hover { background-color: var(--gold) !important; border-color: var(--gold) !important; color: #000 !important; }
+.btn-buy.disabled { opacity: 0.5; border-color: rgba(255,255,255,0.6); }
 
-/* --- 4. DICAS DE LEITURA --- */
-.dicas-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 100px; }
-.dica-item { background: var(--card-bg); padding: 30px; border-left: 3px solid var(--gold); transition: 0.3s; }
-.dica-num { display: block; color: var(--gold); font-family: var(--font-h); font-weight: 700; margin-bottom: 10px; opacity: 0.5; }
-
-/* --- 5. CONTATO E FOOTER --- */
+/* CONTATO */
 .contact-title { font-family: var(--font-h); color: #fff; margin-bottom: 30px; }
 .contact-form { max-width: 600px; background: var(--card-bg); padding: 40px; border: 1px solid var(--border); }
 .form-group { margin-bottom: 20px; }
 .form-group label { display: block; color: var(--gold); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
 .form-group input, .form-group textarea { width: 100%; background: #000; border: 1px solid var(--border); padding: 12px; color: #fff; font-family: var(--font-b); }
 .btn-submit { width: 100%; padding: 20px; background: var(--gold); color: #000; border: none; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
-footer { margin-top: 100px; padding-bottom: 50px; font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px; text-align: center; }
+.btn-submit:hover { background: var(--gold-hover); }
 
-/* --- 6. ADAPTAÇÃO PARA SMARTPHONE (MOBILE) --- */
+/* MODAL & FOOTER */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
+.modal.active { display: flex; }
+.modal-content { background: var(--sidebar-bg); padding: 40px; border: 1px solid var(--gold); text-align: center; max-width: 450px; }
+.btn-modal-close { margin-top: 30px; background: none; border: 1px solid #fff; color: #fff; padding: 10px 20px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; font-weight: 700; }
+footer { margin-top: 120px; padding-bottom: 60px; font-size: 0.75rem; opacity: 0.5; letter-spacing: 2px; text-align: center; text-transform: uppercase; border-top: 1px solid var(--border); padding-top: 40px; }
+
+/* --- ESTILO DICAS DE LEITURA --- */
+.dicas-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas em telas grandes */
+    gap: 30px;
+    margin-bottom: 100px;
+}
+
+.dica-item {
+    background: var(--card-bg);
+    padding: 30px;
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    position: relative;
+    transition: 0.3s;
+}
+
+.dica-item:hover {
+    background: #1c1e26;
+    transform: translateX(5px);
+}
+
+.dica-num {
+    display: block;
+    font-family: var(--font-h);
+    color: var(--gold);
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    opacity: 0.6;
+}
+
+.dica-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-body);
+    margin: 0;
+}
+
+.dica-item strong {
+    color: #fff;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    .dicas-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
 @media (max-width: 1024px) {
-    body { flex-direction: column; } /* Sidebar vai para o topo */
+    body { 
+        flex-direction: column; /* Empilha sidebar e conteúdo */
+    }
 
     aside.sidebar { 
         width: 100%; 
         height: auto; 
-        position: relative; /* Destrava a sidebar do lado esquerdo */
+        position: relative; /* Para de ser fixa no lado e fica no topo */
         padding: 40px 20px; 
         border-right: none; 
         border-bottom: 1px solid var(--border);
     }
 
     main.content { 
-        margin-left: 0; /* REMOVE O BURACO DE 350px NO CELULAR */
+        margin-left: 0; /* IMPORTANTE: Remove o espaço da sidebar para o conteúdo aparecer */
         padding: 40px 20px; 
         width: 100%;
     }
 
-    .hero-title { font-size: 2.2rem; text-align: center; }
-    .hero-intro-text { text-align: justify; }
-
-    .section-divider-title { text-align: center; }
-
-    .books-grid { grid-template-columns: 1fr; } /* Um livro por linha */
-    .book-card { 
-        grid-template-columns: 1fr; /* Capa em cima, texto embaixo */
-        text-align: center; 
+    .hero-title { 
+        font-size: 2.2rem; 
     }
-    .book-cover-container { margin: 0 auto; } /* Centraliza a capa */
-    .book-info h3, .book-info p { text-align: center; }
 
-    .dicas-container { grid-template-columns: 1fr; } /* Uma dica por linha */
+    .books-grid { 
+        grid-template-columns: 1fr; /* Livros um embaixo do outro */
+    }
+
+    .dicas-container {
+        grid-template-columns: 1fr !important; /* Dicas uma embaixo da outra */
+        gap: 20px;
+    }
+
+    .book-card {
+        grid-template-columns: 1fr; /* Capa em cima, texto embaixo no card */
+        text-align: center;
+    }
+
+    .book-cover-container {
+        margin: 0 auto; /* Centraliza a capa no celular */
+    }
     
-    .contact-form { padding: 20px; }
+    .book-info h3, .book-info p {
+        text-align: center; /* Centraliza textos dos livros no celular */
+    }
 }
-
-/* --- 7. MODAL --- */
-.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
-.modal.active { display: flex; }
-.modal-content { background: var(--sidebar-bg); padding: 40px; border: 1px solid var(--gold); text-align: center; max-width: 450px; }
-.btn-modal-close { margin-top: 30px; background: none; border: 1px solid #fff; color: #fff; padding: 10px 20px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; font-weight: 700; }
