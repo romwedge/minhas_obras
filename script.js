@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
             title: "A Marca da Besta", 
             image: "amarca.png", 
+            urlImpresso: "https://loja.uiclap.com/titulo/ua195304",
             urlDigital: "https://apicebooks.com/livro/a-marca-da-besta", 
             urlKindle: "https://www.amazon.com.br/dp/B0HFV69VLF",
             desc: "Uma investigação profunda sobre a revelação dessa profecia. <b>Você irá se surpreender</b> ao descobrir que esta realidade já começou a se revelar bem diante dos seus olhos." 
