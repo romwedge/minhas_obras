@@ -60,7 +60,7 @@ main.content { margin-left: 350px; flex: 1; padding: 80px; max-width: 1200px; }
 .contact-form { max-width: 600px; background: var(--card-bg); padding: 40px; border: 1px solid var(--border); }
 .form-group { margin-bottom: 20px; }
 .form-group label { display: block; color: var(--gold); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
-.form-group input, .form-group textarea { width: 100%; background: #000; border: 1px solid var(--border); padding: 12px; color: #fff; font-family: var(--font-b); }
+.form-group input, .form-group textarea { width: 100%; background: #000; border: 1px solid var(--border); padding: 12px; color: #fff; font-family: var(--font-b); resize: none; }
 .btn-submit { width: 100%; padding: 20px; background: var(--gold); color: #000; border: none; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
 .btn-submit:hover { background: var(--gold-hover); }
 
