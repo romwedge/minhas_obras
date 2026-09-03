@@ -12,11 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "Uma imersão profunda na revelação desta profecia. Surpreenda-se ao perceber que essa realidade já começou a despontar diante dos seus olhos." 
         },
         { 
-            title: "Profecias Messiânicas e as Últimas 24hs de Jesus", 
-            image: "profecias.png", 
-            desc: "Em nenhum ser humano, tantas profecias se cumpriram como em Jesus. Este livro reforçará os motivos que fizeram você crer nEle e em Suas palavras. <b>Esta obra merece sua atenção</b>." 
-        },
-        { 
             title: "Ao Pó Tornarás", 
             image: "AoPoTornaras.jpg", 
             desc: "Não é você que vira pó... é o seu corpo. Uma leitura indispensável para uma reflexão honesta e profunda sobre finitude humana e esperança cristã. <b>Não deixe de ler esta obra</b>." 
@@ -27,9 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "Depois de ler este livro, a maneira como você ora e a sua relação com Deus mudarão para sempre. <b>Uma leitura transformadora</b>." 
         },
         { 
-            title: "Alma é para o corpo - Espírito é para Deus, Vol II", 
-            image: "alma_II.png", 
-            desc: "O Vol. II desta série irá <b>aprofundar a sua conexão espiritual com o Criador</b>. Tudo o que você aprendeu na Bíblia será melhor compreendido de forma clara e renovadora." 
+            title: "Profecias Messiânicas e as Últimas 24hs de Jesus", 
+            image: "profecias.png", 
+            desc: "Em nenhum ser humano, tantas profecias se cumpriram como em Jesus. Este livro reforçará os motivos que fizeram você crer nEle e em Suas palavras. <b>Esta obra merece sua atenção</b>." 
         },
         { 
             title: "O Livro das Perguntas Difíceis da Fé", 
