@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             urlImpresso: "https://loja.uiclap.com/titulo/ua195304",
             urlDigital: "https://apicebooks.com/livro/a-marca-da-besta", 
             urlKindle: "https://www.amazon.com.br/dp/B0HFV69VLF",
-            desc: "Uma investigação profunda sobre a revelação dessa profecia. <b>Você irá se surpreender</b> ao descobrir que esta realidade já começou a se revelar bem diante dos seus olhos." 
+            desc: "Uma imersão profunda na revelação desta profecia. Surpreenda-se ao perceber que essa realidade já começou a despontar diante dos seus olhos." 
         },
         { 
             title: "Profecias Messiânicas e as Últimas 24hs de Jesus", 
@@ -127,5 +127,7 @@ function zoomIn(e) {
     const y = ((e.clientY - rect.top) / rect.height) * 100;
     img.style.transformOrigin = `${x}% ${y}%`;
 }
-function zoomOut(e) { e.currentTarget.querySelector('img').style.transformOrigin = `center center`; }
+function zoomOut(e) { 
+    e.currentTarget.querySelector('img').style.transformOrigin = `center center`; 
+}
 function closeModal() { document.getElementById('modal').classList.remove('active'); }

@@ -28,6 +28,35 @@ aside.sidebar {
 .nav-menu a { color: #fff; text-decoration: none; font-family: var(--font-h); font-size: 0.85rem; opacity: 0.6; transition: 0.3s; display: block; margin-bottom: 15px; }
 .nav-menu a:hover { opacity: 1; color: var(--gold); }
 
+/* --- ESTILO DO NOVO LOGO NA SIDEBAR --- */
+.logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 30px 0; /* Ajusta o espaço entre a bio e os links */
+}
+
+.sidebar-logo {
+    width: 150px; /* Tamanho proporcional */
+    height: auto;
+    opacity: 0.9;
+    
+    /* Filtro para transformar a imagem preta em Dourado (#d4af37) */
+    filter: sepia(100%) saturate(500%) hue-rotate(10deg) brightness(90%) contrast(90%);
+    
+    transition: 0.3s ease;
+}
+
+.sidebar-logo:hover {
+    opacity: 1;
+    filter: sepia(100%) saturate(600%) hue-rotate(10deg) brightness(105%) contrast(100%);
+}
+
+/* Ajuste de margem no menu para não encostar no logo */
+.nav-menu {
+    margin-top: 10px !important;
+}
+
 /* CONTEÚDO PRINCIPAL */
 main.content { margin-left: 350px; flex: 1; padding: 80px; max-width: 1200px; }
 .hero-title { font-family: var(--font-h); font-size: 3.2rem; color: #fff; line-height: 1.1; margin-bottom: 25px; text-align: left; }
@@ -39,8 +68,40 @@ main.content { margin-left: 350px; flex: 1; padding: 80px; max-width: 1200px; }
 /* GRID DE LIVROS */
 .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; margin-bottom: 100px; }
 .book-card { background: var(--card-bg); border: 1px solid var(--border); padding: 30px; border-radius: 4px; display: grid; grid-template-columns: 160px 1fr; gap: 30px; }
-.book-cover-container { width: 160px; height: 240px; overflow: hidden; border-radius: 4px; cursor: zoom-in; box-shadow: 10px 10px 20px rgba(0,0,0,0.5); background: #000; }
-.book-img-zoom { width: 100%; height: 100%; object-fit: cover; transition: transform 0.1s ease-out; transform-origin: center center; }
+/* --- CONTÊINER DA CAPA (MOLDURA CINZA ELEGANTE) --- */
+.book-cover-container { 
+    width: 160px; 
+    height: 240px; 
+    overflow: hidden; /* Mantém o zoom "dentro" do quadro */
+    border-radius: 4px; 
+    cursor: zoom-in; 
+    background: #000; 
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+    position: relative;
+    
+    /* CONTORNO CINZA CLARO ELEGANTE */
+    border: 1px solid #d1d1d1 !important; 
+    
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* --- A IMAGEM (ESTILO AMAZON ZOOM) --- */
+.book-img-zoom { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block;
+    transition: transform 0.1s ease-out;
+    transform-origin: center center;
+}
+
+/* --- ATIVAÇÃO DO ZOOM --- */
+.book-cover-container:hover .book-img-zoom { 
+    transform: scale(2.5) !important; 
+}
+
+    transition: border-color 0.3s ease;}
 .book-cover-container:hover .book-img-zoom { transform: scale(2.5); }
 .book-info h3 { font-family: var(--font-h); color: #fff; margin-bottom: 10px; font-size: 1.1rem; }
 .book-info p { font-size: 0.85rem; margin-bottom: 20px; line-height: 1.5; }
