@@ -28,6 +28,34 @@ aside.sidebar {
 .nav-menu a { color: #fff; text-decoration: none; font-family: var(--font-h); font-size: 0.85rem; opacity: 0.6; transition: 0.3s; display: block; margin-bottom: 15px; }
 .nav-menu a:hover { opacity: 1; color: var(--gold); }
 
+/* --- ESTILO DO NOVO LOGO NA SIDEBAR --- */
+.logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 30px 0; /* Ajusta o espaço entre a bio e os links */
+}
+
+.sidebar-logo {
+    width: 150px; /* Tamanho proporcional */
+    height: auto;
+    opacity: 0.9;
+    
+    /* Filtro para transformar a imagem preta em Dourado (#d4af37) */
+    filter: sepia(100%) saturate(500%) hue-rotate(10deg) brightness(90%) contrast(90%);
+    
+    transition: 0.3s ease;
+}
+
+.sidebar-logo:hover {
+    opacity: 1;
+    filter: sepia(100%) saturate(600%) hue-rotate(10deg) brightness(105%) contrast(100%);
+}
+
+/* Ajuste de margem no menu para não encostar no logo */
+.nav-menu {
+    margin-top: 10px !important;
+}
 /* CONTEÚDO PRINCIPAL */
 main.content { margin-left: 350px; flex: 1; padding: 80px; max-width: 1200px; }
 .hero-title { font-family: var(--font-h); font-size: 3.2rem; color: #fff; line-height: 1.1; margin-bottom: 25px; text-align: left; }
