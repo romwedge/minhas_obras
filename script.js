@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "alma_I.png", 
             desc: "Depois de ler este livro, a maneira como você ora e a sua relação com Deus mudarão para sempre. <b>Uma leitura transformadora</b>." 
         },
-        { 
-            title: "Profecias Messiânicas e as Últimas 24hs de Jesus", 
-            image: "profecias.png", 
-            desc: "Em nenhum ser humano, tantas profecias se cumpriram como em Jesus. Este livro reforçará os motivos que fizeram você crer nEle e em Suas palavras. <b>Esta obra merece sua atenção</b>." 
+	{ 
+            title: "Por Que Devemos Nascer de Novo", 
+            image: "capa2.jpeg", 
+            desc: "<b>Para escapar da segunda morte, é necessário nascer de novo</b>. A primeira morte apenas devolve o nosoo corpo ao pó; mas a segunda é o destino final de quem desfrutou da vida plenamente sem nascer de novo. Esta obra se propõe a esclarecer essa decisão pessoal e definitiva." 
         },
         { 
             title: "O Livro das Perguntas Difíceis da Fé", 
@@ -40,7 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Houve um Homem na Terra de Uz", 
             image: "Uz.png", 
             desc: "Antes mesmo da Lei ser dada a Moisés no Sinai, um manuscrito já descrevia todo o plano de Deus com os homens. <b>Entenda o arquétipo de Jó, a relação de Deus com o homem, e a intromissão de Satanás</b>." 
-        }
+        },
+        { 
+            title: "Profecias Messiânicas e as Últimas 24hs de Jesus", 
+            image: "profecias.png", 
+            desc: "Em nenhum ser humano, tantas profecias se cumpriram como em Jesus. Este livro reforçará os motivos que fizeram você crer nEle e em Suas palavras. <b>Esta obra merece sua atenção</b>." 
+        },
     ];
 
     // 2. RENDERIZAÇÃO DINÂMICA
