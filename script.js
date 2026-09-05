@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Ao Pó Tornarás", 
             image: "AoPoTornaras.jpg", 
 	     urlImpresso: "https://loja.uiclap.com/titulo/ua200266/",
+	     urlDigital: "https://apicebooks.com/livro/ao-po-tornaras",
             desc: "Não é você que vira pó... é o seu corpo. Uma leitura indispensável para uma reflexão honesta e profunda sobre finitude humana e esperança cristã. <b>Não deixe de ler esta obra</b>." 
         },
         { 
