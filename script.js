@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
             title: "Alma é para o corpo, Espírito é para Deus", 
             image: "alma_I.png", 
-            desc: "Você ainda confunde alma com espírito? Este livro trará clareza sobre o que cada um faz em você. Depois deste livro, sua maneira de orar e de se relaçionar com Deus e com o mundo ao seu redor, mudarão para sempre. <b>Você precisa ler este livro</b>." 
+            desc: "Você ainda confunde alma com espírito? Este livro trará clareza sobre o que cada um faz em você. Depois deste livro, sua maneira de orar e de se relacionar com Deus e com o mundo ao seu redor, mudarão para sempre. <b>Você precisa ler este livro</b>." 
         },
 	{ 
             title: "Por Que Devemos Nascer de Novo", 
