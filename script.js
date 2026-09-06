@@ -14,14 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
         { 
             title: "Ao Pó Tornarás", 
             image: "AoPoTornaras.jpg", 
-	     urlImpresso: "https://loja.uiclap.com/titulo/ua200266/",
-	     urlDigital: "https://apicebooks.com/livro/ao-po-tornaras",
+	    urlImpresso: "https://loja.uiclap.com/titulo/ua200266/",
+	    urlDigital: "https://apicebooks.com/livro/ao-po-tornaras",
             desc: "Não é você que vira pó... é o seu corpo. Uma leitura indispensável para uma reflexão honesta e profunda sobre finitude humana e esperança cristã. <b>Não deixe de ler esta obra</b>." 
         },
         { 
-            title: "Alma é para o corpo - Espírito é para Deus, Vol I", 
+            title: "Alma é para o corpo, Espírito é para Deus", 
             image: "alma_I.png", 
-            desc: "Depois de ler este livro, a maneira como você ora e a sua relação com Deus mudarão para sempre. <b>Uma leitura transformadora</b>." 
+            desc: "Você ainda confunde alma com espírito? Este livro trará clareza sobre o que cada um faz em você. Depois deste livro, sua maneira de orar e de se relaçionar com Deus e com o mundo ao seu redor, mudarão para sempre. <b>Você precisa ler este livro</b>." 
         },
 	{ 
             title: "Por Que Devemos Nascer de Novo", 
