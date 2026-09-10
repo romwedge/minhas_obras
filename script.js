@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "AoPoTornaras.jpg", 
 	    urlImpresso: "https://loja.uiclap.com/titulo/ua200266/",
 	    urlDigital: "https://apicebooks.com/livro/ao-po-tornaras",
-            desc: "Minha experiência com o luto me levou a escrever este livro. Não é você que vira pó... é o seu corpo. Uma leitura indispensável para uma reflexão honesta e profunda sobre a finitude humana e a esperança cristã. <b>O luto sob um olhar teológico</b>." 
+            desc: "Minha experiência com o luto me levou a escrever este livro. Não é você que vira pó... é o seu corpo. Um convite para uma reflexão honesta e profunda do <b>luto sob um olhar teológico</b>." 
         },
         { 
             title: "Alma é para o corpo, Espírito é para Deus", 
