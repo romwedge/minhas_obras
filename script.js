@@ -16,12 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "AoPoTornaras.jpg", 
 	    urlImpresso: "https://loja.uiclap.com/titulo/ua200266/",
 	    urlDigital: "https://apicebooks.com/livro/ao-po-tornaras",
-            desc: "Não é você que vira pó... é o seu corpo. Uma leitura indispensável para uma reflexão honesta e profunda sobre finitude humana e esperança cristã. <b>Não deixe de ler esta obra</b>." 
+            desc: "Minha experiência com o luto me levou a escrever este livro. Não é você que vira pó... é o seu corpo. Uma leitura indispensável para uma reflexão honesta e profunda sobre a finitude humana e a esperança cristã. <b>O luto sob um olhar teológico</b>." 
         },
         { 
             title: "Alma é para o corpo, Espírito é para Deus", 
             image: "alma_I.png", 
-            desc: "Você ainda confunde alma com espírito? Este livro trará clareza sobre o que cada um faz em você. Depois deste livro, sua maneira de orar e de se relacionar com Deus e com o mundo ao seu redor, mudarão para sempre. <b>Você precisa ler este livro</b>." 
+            desc: "Você ainda confunde alma com espírito? Este livro trará clareza sobre o que cada um faz em você. Depois deste livro, sua maneira de orar e de se relac ionar com Deus e com o mundo ao seu redor, mudarão para sempre. <b>Você precisa ler este livro</b>." 
         },
 	{ 
             title: "Por Que Devemos Nascer de Novo", 
