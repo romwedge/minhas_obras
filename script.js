@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Lógica para LEIA NO KINDLE
             const btnKindle = b.urlKindle 
                 ? `<a href="${b.urlKindle}" target="_blank" class="btn-buy">LEIA NO KINDLE</a>`
-                : `<button class="btn-buy disabled" data-title="${b.title}" data-format="KINDLE">LEIA NO KINDLE</button>`;
+                : `<button class="btn-buy disabled" data-title="${b.title}" data-format="KINDLE">KINDLE</button>`;
 
             grid.innerHTML += `
                 <div class="book-card">
