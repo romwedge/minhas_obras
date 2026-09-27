@@ -165,9 +165,26 @@
 
         <button type="submit" class="btn-submit">Enviar Mensagem</button>
     </form>
-<p id="form-success" class="form-success" none>
+<p id="form-success" class="form-success" style="display: none;">
     Obrigado pelo contato! Seu e-mail foi enviado com sucesso.
 </p>
+
+<script>
+    (function () {
+        const successMessage = document.getElementById('form-success');
+        const params = new URLSearchParams(window.location.search);
+
+        if (params.get('enviado') === '1' && successMessage) {
+            successMessage.style.display = 'block';
+
+            window.history.replaceState(
+                {},
+                document.title,
+                window.location.pathname + '#contato'
+            );
+        }
+    })();
+</script>
 </section>
 
 <!-- Rodapé -->

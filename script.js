@@ -160,20 +160,9 @@ function zoomOut(e) {
 
 // FECHAMENTO DO MODAL — deve ficar global se for chamado pelo HTML
 function closeModal() {
-document.addEventListener('DOMContentLoaded', () => {
-    const successMessage = document.getElementById('form-success');
+    const modal = document.getElementById('modal');
 
-    // Lê o parâmetro enviado pelo Formhook: ?enviado=1
-    const params = new URLSearchParams(window.location.search);
-
-    if (params.get('enviado') === '1' && successMessage) {
-        successMessage.style.display = 'block';
-
-        // Mantém a posição no contato e remove o marcador da URL.
-        window.history.replaceState(
-            {},
-            document.title,
-            window.location.pathname + '#contato'
-        );
+    if (modal) {
+        modal.classList.remove('active');
     }
-});
+}
