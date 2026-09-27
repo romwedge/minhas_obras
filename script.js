@@ -62,36 +62,44 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Profecias Messiânicas e as Últimas 24hs de Jesus", 
             image: "profecias.png", 
             desc: "Em nenhum ser humano, tantas profecias se cumpriram como em Jesus. Este livro reforçará os motivos que fizeram você crer nEle e em Suas palavras. <b>Esta obra merece sua atenção</b>." 
-        },
+        }
     ];
 
     // 2. RENDERIZAÇÃO DINÂMICA
     const grid = document.getElementById('grid');
+
     if (grid) {
         books.forEach(b => {
             // Lógica para LIVRO IMPRESSO
-            const btnImpresso = b.urlImpresso 
-                ? `<a href="${b.urlImpresso}" target="_blank" class="btn-buy">LIVRO IMPRESSO</a>`
-                : `<button class="btn-buy disabled" data-title="${b.title}" data-format="LIVRO IMPRESSO">LIVRO IMPRESSO</button>`;
+            const btnImpresso = b.urlImpresso
+                ? `<a href="${b.urlImpresso}" target="_blank" rel="noopener noreferrer" class="btn-buy">LIVRO IMPRESSO</a>`
+                : `<button type="button" class="btn-buy disabled" data-title="${b.title}" data-format="LIVRO IMPRESSO">LIVRO IMPRESSO</button>`;
 
             // Lógica para LIVRO DIGITAL
-            const btnDigital = b.urlDigital 
-                ? `<a href="${b.urlDigital}" target="_blank" class="btn-buy">LIVRO DIGITAL</a>`
-                : `<button class="btn-buy disabled" data-title="${b.title}" data-format="LIVRO DIGITAL">LIVRO DIGITAL</button>`;
+            const btnDigital = b.urlDigital
+                ? `<a href="${b.urlDigital}" target="_blank" rel="noopener noreferrer" class="btn-buy">LIVRO DIGITAL</a>`
+                : `<button type="button" class="btn-buy disabled" data-title="${b.title}" data-format="LIVRO DIGITAL">LIVRO DIGITAL</button>`;
 
             // Lógica para LEIA NO KINDLE
-            const btnKindle = b.urlKindle 
-                ? `<a href="${b.urlKindle}" target="_blank" class="btn-buy">KINDLE</a>`
-                : `<button class="btn-buy disabled" data-title="${b.title}" data-format="KINDLE">KINDLE</button>`;
+            const btnKindle = b.urlKindle
+                ? `<a href="${b.urlKindle}" target="_blank" rel="noopener noreferrer" class="btn-buy">KINDLE</a>`
+                : `<button type="button" class="btn-buy disabled" data-title="${b.title}" data-format="KINDLE">KINDLE</button>`;
 
             grid.innerHTML += `
                 <div class="book-card">
                     <div class="book-cover-container" onmousemove="zoomIn(event)" onmouseleave="zoomOut(event)">
-                        <img src="${b.image}" alt="${b.title}" class="book-img-zoom" onerror="this.src='https://via.placeholder.com/160x240?text=Capa'">
+                        <img
+                            src="${b.image}"
+                            alt="${b.title}"
+                            class="book-img-zoom"
+                            onerror="this.src='https://via.placeholder.com/160x240?text=Capa'"
+                        >
                     </div>
+
                     <div class="book-info">
                         <h3>${b.title}</h3>
                         <p>${b.desc}</p>
+
                         <div class="book-actions">
                             ${btnImpresso}
                             ${btnDigital}
@@ -103,40 +111,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. GERENCIADOR DE CLIQUES E MODAL (BLINDADO CONTRA POINTEREVENT)
+    // 3. GERENCIADOR DE CLIQUES E MODAL
     document.addEventListener('click', function (e) {
-        if (e.target && e.target.classList.contains('btn-buy') && e.target.tagName === 'BUTTON') {
+        if (
+            e.target &&
+            e.target.classList.contains('btn-buy') &&
+            e.target.tagName === 'BUTTON'
+        ) {
             e.preventDefault();
-            
+
             const title = e.target.getAttribute('data-title');
             const format = e.target.getAttribute('data-format');
-            
+
             const modal = document.getElementById('modal');
             const msg = document.getElementById('modal-msg');
-            
+
             if (modal && msg) {
                 msg.innerHTML = `A versão <strong>${format}</strong> da obra <em>"${title}"</em> está sendo preparada para o lançamento oficial e estará disponível em breve.`;
+
                 modal.classList.add('active');
             }
         }
     });
 
-    // ZOOM LOGIC
-    function zoomIn(e) {
-        const container = e.currentTarget;
-        const img = container.querySelector('img');
-        const rect = container.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        img.style.transformOrigin = `${x}% ${y}%`;
-    }
+}); // Fim do DOMContentLoaded
 
-    function zoomOut(e) { 
-        e.currentTarget.querySelector('img').style.transformOrigin = `center center`; 
-    }
 
-    function closeModal() { 
-        document.getElementById('modal').classList.remove('active'); 
-    }
+// ZOOM NAS CAPAS — deve ficar fora do DOMContentLoaded
+function zoomIn(e) {
+    const container = e.currentTarget;
+    const img = container.querySelector('img');
+    const rect = container.getBoundingClientRect();
 
-});
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    img.style.transformOrigin = `${x}% ${y}%`;
+}
+
+function zoomOut(e) {
+    const img = e.currentTarget.querySelector('img');
+
+    if (img) {
+        img.style.transformOrigin = 'center center';
+    }
+}
+
+
+// FECHAMENTO DO MODAL — deve ficar global se for chamado pelo HTML
+function closeModal() {
+    const modal = document.getElementById('modal');
+
+    if (modal) {
+        modal.classList.remove('active');
+    }
+}
