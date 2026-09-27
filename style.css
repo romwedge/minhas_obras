@@ -229,3 +229,16 @@ footer { margin-top: 120px; padding-bottom: 60px; font-size: 0.75rem; opacity: 0
         text-align: center; /* Centraliza textos dos livros no celular */
     }
 }
+
+.form-success {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border: 1px solid #b7d9bd;
+    border-radius: 6px;
+    background: #eef9f0;
+    color: #1f6b2a;
+    font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+}

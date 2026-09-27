@@ -166,3 +166,15 @@ function closeModal() {
         modal.classList.remove('active');
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const successMessage = document.getElementById('form-success');
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get('enviado') === '1' && successMessage) {
+        successMessage.hidden = false;
+
+        // Limpa ?enviado=1 da barra de endereço e preserva #contato.
+        history.replaceState(null, '', '#contato');
+    }
+});
