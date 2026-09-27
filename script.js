@@ -9,24 +9,39 @@ document.addEventListener('DOMContentLoaded', () => {
             urlImpresso: "https://www.amazon.com.br/dp/6562255465",
             urlDigital: "https://apicebooks.com/livro/a-marca-da-besta", 
             urlKindle: "https://www.amazon.com.br/dp/B0HFV69VLF",
-            desc: "Uma imersão profunda na revelação desta profecia. Surpreenda-se ao perceber que essa realidade já começou a despontar diante dos seus olhos." 
+            desc: "Uma imersão profunda na revelação desta profecia, capaz de surpreendê-lo ao mostrar que essa realidade já começa a se manifestar diante dos seus olhos, sem qualquer sensacionalismo, mas uma realidade concreta, perceptível a todos os que observam com atenção e discernimento." 
         },
         { 
             title: "Ao Pó Tornarás", 
             image: "AoPoTornaras.jpg", 
-	    urlImpresso: "https://loja.uiclap.com/titulo/ua200266/",
-	    urlDigital: "https://apicebooks.com/livro/ao-po-tornaras",
-            desc: "Minha experiência com o luto me levou a escrever este livro. Não é você que vira pó... é o seu corpo. Um convite para uma reflexão honesta e profunda do <b>luto sob um olhar teológico</b>." 
+            urlImpresso: "https://loja.uiclap.com/titulo/ua200266/",
+            urlDigital: "https://apicebooks.com/livro/ao-po-tornaras",
+            desc: "Minha própria experiência com o luto me levou a escrever este livro. <b>Não é você que vira pó... é o seu corpo</b>. Este livro é um convite para uma reflexão honesta e profunda sobre o luto, por um olhar teológico e transformador." 
         },
         { 
             title: "Alma é para o corpo, Espírito é para Deus", 
             image: "alma_I.png", 
-            desc: "Você ainda confunde alma com espírito? Este livro trará clareza sobre o que cada um faz em você. Depois deste livro, sua maneira de orar e de se relac ionar com Deus e com o mundo ao seu redor, mudarão para sempre. <b>Você precisa ler este livro</b>." 
+            desc: "Você ainda confunde alma com espírito? Este livro trará clareza sobre o que cada um faz em você. Depois deste livro, sua maneira de orar e de se relacionar com Deus e com o mundo ao seu redor, mudarão para sempre. <b>Você precisa ler este livro</b>." 
         },
-	{ 
+        { 
             title: "Por Que Devemos Nascer de Novo", 
             image: "capa2.jpeg", 
             desc: "<b>Para escapar da segunda morte, é necessário nascer de novo</b>. A primeira morte apenas devolve o nosoo corpo ao pó; mas a segunda é o destino final de quem desfrutou da vida plenamente sem nascer de novo. Esta obra se propõe a esclarecer essa decisão pessoal e definitiva." 
+        },
+        { 
+            title: "O Perigo dos 'ismos'", 
+            image: "ismos.png", 
+            desc: "Cristianismo, Catolicismo, Islamismo. Muito além de uma simples palavra que termina em -ismo, vamos observar a estrutura organizada de pensamentos, valores e convicções que pretende explicar a realidade, orientar condutas e legitimar sua própria ideologia. <b>Todo 'ismo' promete segurança e, quase sempre, entrega uma jaula</b>." 
+        },
+        { 
+            title: "Apostasia", 
+            image: "Apostasia.jpg", 
+            desc: "A apostasia pode ser o maior termômetro profético da volta de Cristo e do limite da incredulidade humana. Quando o mundo e a Igreja se afastam do Criador, a humanidade perde o fundamento da própria vida como a conhecemos. <b>Já estamos vivendo a Apostasia?</b>" 
+        },
+        { 
+            title: "Fé, Crenças & Crendices'", 
+            image: "capa-crendices.jpeg", 
+            desc: "Este livro convida o leitor a distinguir a Fé Verdadeira das crenças e crendices que, embora revestidas de linguagem religiosa, podem transformar a espiritualidade em medo, fórmulas ou tentativas de controlar o invisível." 
         },
         { 
             title: "O Livro das Perguntas Difíceis da Fé", 
@@ -106,30 +121,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 4. FORMSPREE AJAX
-    const form = document.getElementById('contact-form');
-    if (form) {
-        form.onsubmit = async (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
-            const response = await fetch('https://formspree.io/f/mjybobzn', {
-                method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
-            });
-            if (response.ok) { alert('Mensagem enviada com sucesso!'); form.reset(); }
-        };
+    // ZOOM LOGIC
+    function zoomIn(e) {
+        const container = e.currentTarget;
+        const img = container.querySelector('img');
+        const rect = container.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        img.style.transformOrigin = `${x}% ${y}%`;
     }
-});
 
-// ZOOM LOGIC
-function zoomIn(e) {
-    const container = e.currentTarget;
-    const img = container.querySelector('img');
-    const rect = container.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    img.style.transformOrigin = `${x}% ${y}%`;
-}
-function zoomOut(e) { 
-    e.currentTarget.querySelector('img').style.transformOrigin = `center center`; 
-}
-function closeModal() { document.getElementById('modal').classList.remove('active'); }
+    function zoomOut(e) { 
+        e.currentTarget.querySelector('img').style.transformOrigin = `center center`; 
+    }
+
+    function closeModal() { 
+        document.getElementById('modal').classList.remove('active'); 
+    }
+
+});
