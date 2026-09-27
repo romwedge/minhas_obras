@@ -160,21 +160,20 @@ function zoomOut(e) {
 
 // FECHAMENTO DO MODAL — deve ficar global se for chamado pelo HTML
 function closeModal() {
-    const modal = document.getElementById('modal');
-
-    if (modal) {
-        modal.classList.remove('active');
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const successMessage = document.getElementById('form-success');
+
+    // Lê o parâmetro enviado pelo Formhook: ?enviado=1
     const params = new URLSearchParams(window.location.search);
 
     if (params.get('enviado') === '1' && successMessage) {
-        successMessage.hidden = false;
+        successMessage.style.display = 'block';
 
-        // Limpa ?enviado=1 da barra de endereço e preserva #contato.
-        history.replaceState(null, '', '#contato');
+        // Mantém a posição no contato e remove o marcador da URL.
+        window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname + '#contato'
+        );
     }
 });
