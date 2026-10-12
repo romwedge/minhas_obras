@@ -50,9 +50,9 @@
         </div>
 
         <section id="obras">
-            <div class="books-grid" id="grid">
-                <!-- Os livros são injetados aqui pelo script.js -->
-            </div>
+   	   <div class="container">
+           <div id="books-grid" class="books-grid"></div>
+           </div>
         </section>
 
         <!-- Seção de Dicas de Leitura -->
@@ -204,5 +204,12 @@
 
     <!-- Script Externo -->
     <script src="script.js"></script>
+<!-- Pop-up de Zoom Estilo Amazon -->
+    <div id="amazon-zoom-container" class="amazon-zoom-modal" onclick="closeAmazonZoom()">
+        <div class="amazon-zoom-content" onclick="event.stopPropagation()">
+            <button class="amazon-zoom-close" onclick="closeAmazonZoom()">&times;</button>
+            <img id="amazon-zoom-img" src="" alt="Zoom da Capa">
+        </div>
+    </div>
 </body>
 </html>

@@ -68,43 +68,90 @@ main.content { margin-left: 350px; flex: 1; padding: 80px; max-width: 1200px; }
 /* GRID DE LIVROS */
 .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; margin-bottom: 100px; }
 .book-card { background: var(--card-bg); border: 1px solid var(--border); padding: 30px; border-radius: 4px; display: grid; grid-template-columns: 160px 1fr; gap: 30px; }
-/* --- CONTÊINER DA CAPA (MOLDURA CINZA ELEGANTE) --- */
-.book-cover-container { 
-    width: 160px; 
-    height: 240px; 
-    overflow: hidden; /* Mantém o zoom "dentro" do quadro */
-    border-radius: 4px; 
-    cursor: zoom-in; 
-    background: #000; 
-    box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+
+/* --- CONTAINER DA CAPA --- */
+.book-cover-wrapper {
     position: relative;
-    
-    /* CONTORNO CINZA CLARO ELEGANTE */
-    border: 1px solid #d1d1d1 !important; 
-    
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
+    width: 100%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    cursor: zoom-in;
 }
 
-/* --- A IMAGEM (ESTILO AMAZON ZOOM) --- */
+/* --- A IMAGEM NORMAL NO CARD --- */
 .book-img-zoom { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
+    max-height: 100%; 
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; 
     display: block;
-    transition: transform 0.1s ease-out;
-    transform-origin: center center;
+    border: 1px solid #d1d1d1 !important; 
+    box-sizing: border-box;
+    transition: opacity 0.2s ease;
 }
 
-/* --- ATIVAÇÃO DO ZOOM --- */
-.book-cover-container:hover .book-img-zoom { 
-    transform: scale(2.5) !important; 
+/* --- ESTILO DO POP-UP / LUPA DE ZOOM ESTILO AMAZON --- */
+.amazon-zoom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85); /* Fundo escuro imersivo */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: zoom-out;
+    padding: 20px;
 }
 
-    transition: border-color 0.3s ease;}
-.book-cover-container:hover .book-img-zoom { transform: scale(2.5); }
-.book-info h3 { font-family: var(--font-h); color: #fff; margin-bottom: 10px; font-size: 1.1rem; }
-.book-info p { font-size: 0.85rem; margin-bottom: 20px; line-height: 1.5; }
+.amazon-zoom-modal.active {
+    display: flex;
+}
+
+.amazon-zoom-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    background: #121212;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #d1d1d1;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    text-align: center;
+}
+
+.amazon-zoom-content img {
+    max-width: 80vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid #d1d1d1;
+    display: block;
+    margin: 0 auto;
+}
+
+.amazon-zoom-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.amazon-zoom-close:hover {
+    color: #d4af37;
+}
 
 /* BOTÕES BRANCOS COM HOVER DOURADO */
 .btn-buy { 
@@ -241,4 +288,58 @@ footer { margin-top: 120px; padding-bottom: 60px; font-size: 0.75rem; opacity: 0
     font-size: 0.95rem;
     line-height: 1.5;
     text-align: center;
+}
+
+/* Correção de alinhamento e cores para as estrelas */
+.book-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 6px 0 12px 0;
+}
+
+.book-rating .stars {
+    color: #d4af37;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.book-rating .rating-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.book-rating .rating-text {
+    font-size: 0.75rem;
+    color: #8c92a4;
+}
+/* --- BOTÕES DE PLATAFORMAS (Amazon, Mercado Livre, etc.) --- */
+.platform-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-title);
+    border: 1px solid var(--border-color);
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.platform-btn:hover {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    transform: translateY(-2px);
+}
+
+/* Destaque opcional para a Amazon ou Kindle se quiser personalizar */
+.platform-btn[data-platform="Amazon"]:hover,
+.platform-btn[data-platform="Kindle"]:hover {
+    border-color: #f0c14b;
+    color: #f0c14b;
 }
