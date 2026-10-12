@@ -195,3 +195,25 @@ function closeAmazonZoom() {
         zoomModal.classList.remove('active');
     }
 }
+
+// Exemplo de abertura do modal (quando clica no botão "Em breve")
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('disabled-btn') || e.target.classList.contains('btn-modal-open')) {
+        const title = e.target.getAttribute('data-title') || "Este livro";
+        const modalMsg = document.getElementById('modal-msg');
+        const modal = document.getElementById('modal');
+        
+        if (modalMsg && modal) {
+            modalMsg.textContent = `${title} estará disponível em breve.`;
+            modal.classList.add('active'); // ou modal.style.display = 'flex';
+        }
+    }
+});
+
+// Função global para fechar o modal
+function closeModal() {
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.classList.remove('active'); // ou modal.style.display = 'none';
+    }
+}
