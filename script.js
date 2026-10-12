@@ -210,10 +210,16 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Função global para fechar o modal
-function closeModal() {
+// Função para fechar o modal (Compatível com PC e Celular)
+function closeModal(event) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    
     const modal = document.getElementById('modal');
     if (modal) {
-        modal.classList.remove('active'); // ou modal.style.display = 'none';
+        modal.classList.remove('active');
+        modal.style.display = 'none'; // Garante que some no mobile
     }
 }
