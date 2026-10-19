@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "alma_I.png", 
             rating: "5.0",
             ratingText: "Leitura Altamente Recomendada",
-            desc: "Você ainda confunde alma com espírito? Este livro trará clareza sobre o que cada um faz em você. Depois deste livro, sua maneira de orar e de se relacionar com Deus e com o mundo ao seu redor, mudarão para sempre. <b>Você precisa ler este livro</b>.",
+            desc: "Você ainda confunde alma com espírito? Este livro trará clareza sobre o que cada um faz em você. Depois deste livro, sua maneira de orar e de se relacionar com Deus e com o mundo ao seu redor, mudará para sempre. <b>Você precisa ler este livro</b>.",
             links: []
         },
         { 
