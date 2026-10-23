@@ -64,7 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
             rating: "5.0",
             ratingText: "Leitura Altamente Recomendada",
             desc: "Este livro convida o leitor a distinguir a Fé Verdadeira das crenças e crendices que, embora revestidas de linguagem religiosa, podem transformar a espiritualidade em medo, fórmulas ou tentativas de controlar o invisível.",
-            links: []
+            links:  [
+                { name: "UICLAP", url: "https://loja.uiclap.com/titulo/ua215711/" }
+            ]
         },
         { 
             title: "O Livro das Perguntas Difíceis da Fé", 
