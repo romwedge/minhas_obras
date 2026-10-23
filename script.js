@@ -56,7 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
             rating: "5.0",
             ratingText: "Leitura Altamente Recomendada",
             desc: "A apostasia pode ser o maior termômetro profético da volta de Cristo e do limite da incredulidade humana. Quando o mundo e a Igreja se afastam do Criador, a humanidade perde o fundamento da própria vida como a conhecemos. <b>Já estamos vivendo a Apostasia?</b>",
-            links: []
+            links: [
+		{ name: "UICLAP", url: "https://loja.uiclap.com/titulo/ua215727/" }
+	    ]
         },
         { 
             title: "Fé, Crenças & Crendices", 
